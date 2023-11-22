@@ -137,7 +137,7 @@
           "name": "Routedash",
           "pattern": "dashboard",
           "target": [
-            "Targetdash"
+            "Targetdashboard"
           ]
         },
         {
@@ -152,6 +152,12 @@
           "pattern": "MastViewObj",
           "target": [
             "TargetMastView"
+          ]
+        },{
+          "name": "voyageType",
+          "pattern": "voyageType",
+          "target": [
+            "TargetvoyageType"
           ]
         }
 
@@ -182,8 +188,8 @@
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "BidCont",
-          "viewName": "BidCont"
+          "viewId": "liveBidCont1",
+          "viewName": "liveBidCont"
         },
         "TargetBidObj": {
           "viewType": "XML",
@@ -192,12 +198,12 @@
           "viewId": "BidObj",
           "viewName": "BidObj"
         },
-        "Targetdash": {
+        "Targetdashboard": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "dash",
-          "viewName": "dash"
+          "viewId": "main_dashboard",
+          "viewName": "Dashboard"
         },
         "TargetTransView": {
           "viewType": "XML",
@@ -212,6 +218,13 @@
           "clearControlAggregation": false,
           "viewId": "MastView",
           "viewName": "MastView"
+        },
+        "TargetvoyageType": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "TargetvoyageType1",
+          "viewName": "createVoyageTypeMast"
         }
       }
     },

@@ -1,0 +1,84 @@
+<mvc:View controllerName="nauticalfe.controller.MastView"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:core="sap.ui.core"
+    xmlns="sap.m" xmlns:tnt="sap.tnt">
+    	<Page id="_IDGenPage1">
+        
+
+
+        <VBox id="_IDGenVBox1"  class="vPanel">
+        
+           <Panel id="_IDGenPanel1"  class="panel" width="900px" height="700px">
+            
+            <ObjectListItem id="_IDGenObjectListItem1"  intro="Selection Options" ></ObjectListItem>
+ 
+         <Button id="_IDGenButton2"  text="Voyage Type"  width="20%" class="one" press="press1"></Button>
+         <Button id="_IDGenButton3"  icon="sap-icon://arrow-right" class="two"></Button>      
+     <Button id="_IDGenButton4"   text="Vessel Type" width="20%" class="three"></Button>
+              <Button id="_IDGenButton5"  icon="sap-icon://arrow-right" class="four"></Button>      
+     <Button id="_IDGenButton6"   text="Currency" width="20%" class="five"></Button>
+     <Button id="_IDGenButton7"  text="Class Master" width="20%" class="one"></Button>
+         <Button id="_IDGenButton8"  icon="sap-icon://arrow-right" class="two"></Button>
+     <Button id="_IDGenButton10"  text="Bid Master" width="20%" class="three"></Button>
+                  <Button id="_IDGenButton9"  icon="sap-icon://arrow-right" class="four"></Button>      
+     <Button id="_IDGenButton11"   text="Port/Loc Master" width="20%" class="five"></Button>
+      <Button id="_IDGenButton12"  text="Route Master" width="20%" class="one"></Button>
+               <Button id="_IDGenButton13" icon="sap-icon://arrow-right" class="two"></Button>      
+     <Button id="_IDGenButton14"  text="UOM" width="20%" class="three"></Button>
+         <Button id="_IDGenButton15" icon="sap-icon://arrow-right" class="four"></Button>
+     <Button id="_IDGenButton16"  text="Cost Master" width="20%" class="five"></Button>
+     <Button id="_IDGenButton18"  text="Event Master" width="20%" class="one"></Button>
+              <Button id="_IDGenButton17" icon="sap-icon://arrow-right" class="two"></Button>      
+           <Button id="_IDGenButton19"  text="Ref. Doc. Indicator" width="20%" class="three"></Button>
+         <Button id="_IDGenButton20" icon="sap-icon://arrow-right" class="four"></Button>
+     <Button id="_IDGenButton22" text="Business Partner" width="20%" class="five"></Button>
+     <Button id="_IDGenButton23"  text="Configure Release..." width="20%" class="one"></Button>
+                  <Button id="_IDGenButton21"  icon="sap-icon://arrow-right" class="two"></Button> 
+     <Button id="_IDGenButton24"  text="Port/Loc Upload" width="20%" class="three"></Button>
+                  <Button id="_IDGenButton25"  icon="sap-icon://arrow-right" class="four"></Button> 
+     <Button id="_IDGenButton26"  text="Port Master" width="20%" class="five"></Button>
+     <Button id="_IDGenButton27"  text="Port Upd" width="20%" class="one"></Button>
+                  <Button id="_IDGenButton28"  icon="sap-icon://arrow-right" class="two"></Button> 
+     <Button id="_IDGenButton29"  text="Country Master Upd" width="20%" class="three"></Button>
+                  <Button id="_IDGenButton30"  icon="sap-icon://arrow-right" class="four"></Button> 
+     <Button id="_IDGenButton31"  text="Country Master" width="20%" class="five"></Button>
+     <Button id="_IDGenButton32"  text="API URL" width="20%" class="one"></Button>
+                  <Button id="_IDGenButton33"  icon="sap-icon://arrow-right" class="two"></Button>
+     <Button id="_IDGenButton34"  text="Marine Path Upd" width="20%" class="three"></Button>
+                  <Button id="_IDGenButton35"  icon="sap-icon://arrow-right" class="four"></Button>
+     <Button id="_IDGenButton36"  text="Marine Dis Upd" width="20%" class="five"></Button>
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+     
+
+               </Panel>   
+            
+        
+
+        
+        <Panel id="_IDGenPanel2"  class="panel1">
+        <!-- <Image id="_IDGenImage1"  src="https://www.shutterstock.com/image-photo/container-ship-vessel-cargo-carrier-260nw-1457257346.jpg" width="600px" height="500px" class="img"></Image> -->
+        </Panel>
+        </VBox>
+        
+      
+	</Page>
+
+   
+    
+    
+</mvc:View>

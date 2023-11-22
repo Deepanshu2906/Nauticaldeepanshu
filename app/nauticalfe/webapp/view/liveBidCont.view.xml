@@ -1,0 +1,80 @@
+<mvc:View xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards"
+xmlns:form="sap.ui.layout.form"
+xmlns:f="sap.f"
+ controllerName="nauticalfe.controller.liveBidCont"
+    xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+    <!--scrollbar added-->
+
+   <tnt:ToolHeader id="header2"><Text id="Bidheading" text="Bidding Controller Portal " class="heading1"></Text></tnt:ToolHeader>
+   <ScrollContainer id="_IDGenScrollContainer2"
+    height="100%"
+    width="100%"
+    vertical="true"
+    focusable="true">
+   <FlexBox id="biddingTileflexId" class="biddingTileflex">
+   <GenericTile id="openTileId" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout Tile" header="Open" subheader="Bids" press="openTile"  >
+		<TileContent id="openTile">
+			<NumericContent id="openTileNumericId" value="0" icon="sap-icon://open-folder" withMargin="false"  />
+		</TileContent>
+	</GenericTile>
+
+	<GenericTile id="closeTileId" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout Tile" header="Close" subheader="Bids" press="closeTile" >
+		<TileContent id="closeTile" >
+			<NumericContent id="closeTileNumericId" value="4" icon="sap-icon://folder-full" withMargin="false" />
+		</TileContent>
+	</GenericTile> 
+   <GenericTile id="ongoingTileId" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout Tile" header="Ongoing" subheader="Bids" press="ongoingTile" >
+		<TileContent id="ongoingTile" >
+			<NumericContent id="ongoingTileNumericId" value="2" icon="sap-icon://away" withMargin="false"  />
+		</TileContent>
+	</GenericTile> 
+   <GenericTile id="allTileId" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout Tile" header="All" subheader="Bids" press="allTile" >
+		<TileContent id="allTile" >
+			<NumericContent id="allTileNumericId" value="18" icon="sap-icon://browse-folder" withMargin="false"  />
+		</TileContent>
+	</GenericTile> 
+   </FlexBox>
+   
+   
+   
+   
+   <Panel id="PanelId"  headerText="Ongoing Bids" class="ongoingPanelPanel " width="auto">
+   
+   <Table id="table" items="{bidData>/biddingData}" growing="true" growingThreshold="10" >
+          <columns>
+           <Column id="bheading1" >
+             <Text id="text1" text="Chartering Req No."/>
+           </Column>
+           <Column id="bheading2" >
+             <Text id="text2" text="Bid Start Date"/>
+           </Column>
+           <Column id="bheading3" >
+             <Text id="text3" text="Bid Start Time"/>
+           </Column>
+           <Column id="bheading4" >
+             <Text id="text4" text="Bid End Date"/>
+           </Column>
+           <Column id="bheading5" >
+             <Text id="text5" text="Bid End Time"/>
+           </Column>
+           <Column id="bheading6" >
+             <Text id="text6" text="Status"/>
+			 </Column>
+          </columns>
+		  <items >
+           <ColumnListItem id="coloumnlist"  type="Navigation" press="onPressBidTableData">
+             <cells>
+              <Text id="bfield1" text = "{bidData>Chartering Req No.}"/>
+              <Text id="bfield2" text = "{bidData>Bid Start Date}"/>
+              <Text id="bfield3" text ="{bidData>Bid Start Time}"/>
+              <Text id="bfield4" text ="{bidData>Bid End Date}"/>
+              <Text id="bfield5" text ="{bidData>Bid End Time}"/>
+               <Text id="bfield6" text ="{bidData>Status}"/>
+			   </cells>
+			   </ColumnListItem>
+			  </items>
+        </Table>
+		</Panel>
+    </ScrollContainer>
+</mvc:View>
+ 

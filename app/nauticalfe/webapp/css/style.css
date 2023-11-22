@@ -265,3 +265,16 @@
 .one,.two,.three,.four,.five{
     margin: 2%; margin-top: 7%;
 }
+.layout{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.layout1{
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    justify-content: space-between;
+}

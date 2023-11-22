@@ -33,7 +33,7 @@ xmlns:form="sap.ui.layout.form"
                 <Label id="_IDGenLabel1" text="voyage Name"/>
                 <Input id="_IDGenInput1" value="" />
                 <Label id="_IDGenLabel2" text="Voyage Type"/>
-                <Input id="_IDGenInput2" value="" showValueHelp="true" valueHelpRequest="onValueHelpPressVoyageType" />
+                <Input id="_IDGenInput2" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog" />
                 <Label id="_IDGenLabel3" text="bidding Type"/>
                 <Input id="_IDGenInput3" value="" showValueHelp="true"/>
                 <Label id="_IDGenLabel4" text="Cargo Type"/>
@@ -60,22 +60,22 @@ xmlns:form="sap.ui.layout.form"
     
     
     <HBox id="_IDGenHBox1" class="layout">
-       <FlexBox id="_IDGenFlexBox1" >
+       <FlexBox id="_IDGenFlexBox1" class="layout1" >
         <CheckBox id="_IDGenCheckBox1" text="Suez" />
         <CheckBox id="_IDGenCheckBox2" text="Panama" />
         <CheckBox id="_IDGenCheckBox3" text="Keil" />
         </FlexBox>
         
-        <FlexBox id="_IDGenFlexBox2">
-        <Label id="_IDGenLabel6" text="Speed" />
+        <FlexBox id="_IDGenFlexBox2" class="layout1">
+        <Label id="_IDGenLabel6" text="Speed" class="sapUiMarginSmall"/>
         <Input id="_IDGenInput6"  />
         <Label id="_IDGenLabel8" text="NM/HRS" />
         </FlexBox>
-        <FlexBox id="_IDGenFlexBox4" >
+        <FlexBox id="_IDGenFlexBox4" class="layout1" >
         <Label id="_IDGenLabel7" text="Total Days" />
         <Input id="_IDGenInput7"  />
         </FlexBox>
-        <FlexBox id="_IDGenFlexBox3" >
+        <FlexBox id="_IDGenFlexBox3" class="layout1" >
         <Button id="_IDGenButton1" class="clr" text="Create Voyage" press="onCreateVoyage"/>
         <Button id="_IDGenButton2" text="Freight Simulator" />
         <Button id="_IDGenButton3" text="Calculate" />
