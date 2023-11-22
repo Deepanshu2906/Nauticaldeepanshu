@@ -1,5 +1,5 @@
 ###
-GET http://localhost:4004/odata/v4/master-data-yoyage-service/VOYTYP
+GET http://localhost:4004/odata/v4/master-data-yoyage-service/VOYTYP/3
 
 ###POST REQUEST
 POST http://localhost:4004/odata/v4/master-data-yoyage-service/VOYTYP

@@ -7,9 +7,21 @@ xmlns:form="sap.ui.layout.form"
  controllerName="nauticalfe.controller.createVoyageTypeMast"
     xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
 	
-  <Page id="_IDGenPage1" title="Editable Table">
+  <Page id="_IDGenPage1" >
     <content>
-      <Table id="myTable" mode="None" items="{dkdsk}">
+    <ObjectHeader id="_IDGenObjectHeader1" title="Create Voyage Type" icon="sap-icon://document"></ObjectHeader>
+    <Panel id="_IDGenPanel1" >
+    <Bar id="_IDGenBar1" >
+      <contentLeft>
+      
+      <Button id="_IDGenButton3" text="create" press="onCreate"></Button>
+      <Button id="_IDGenButton4" text="Delete" press="onDeleteLineItem"></Button>
+      <Button id="_IDGenButton5" text="update"></Button>
+
+      </contentLeft>
+    </Bar>
+      <Table id="createTypeTable" mode="MultiSelect" items="{/VOYTYP}">
+
         <columns>
           <Column id="_IDGenColumn1">
             <Text id="_IDGenText1" text="Voyage Code" />
@@ -17,21 +29,21 @@ xmlns:form="sap.ui.layout.form"
           <Column id="_IDGenColumn2">
             <Text id="_IDGenText2" text="Description" />
           </Column>
-          <Column id="_IDGenColumn3">
-            <Text id="_IDGenText3" text="Actions" />
-          </Column>
+         
         </columns>
         <items>
           <ColumnListItem id="_IDGenColumnListItem1">
             <cells>
-              <Input id="_IDGenInput1" value="{VOYCD}" editable="true" />
-              <Input id="_IDGenInput2" value="{VOYDES}" editable="true" />
+              <Input id="_IDGenInput1" value="{VOYCD}" editable="false" />
+              <Input id="_IDGenInput2" value="{VOYDES}" editable="false" />
               <Button id="_IDGenButton1" icon="sap-icon://delete" press="onDeleteRow" />
             </cells>
           </ColumnListItem>
+         
         </items>
       </Table>
       <Button id="_IDGenButton2" text="Add Row" press="onAddRow" />
+    </Panel>
     </content>
   </Page>
 
