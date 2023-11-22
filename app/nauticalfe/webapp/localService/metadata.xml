@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="create_voyage_service" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="NAVOYGH" EntityType="create_voyage_service.NAVOYGH">
+                    <NavigationPropertyBinding Path="FRTCO" Target="Currencies"/>
+                    <NavigationPropertyBinding Path="FREGHT" Target="Currencies"/>
+                    <NavigationPropertyBinding Path="FRCOST_ACT" Target="Currencies"/>
+                </EntitySet>
+                <EntitySet Name="NAVOYGIP" EntityType="create_voyage_service.NAVOYGIP">
+                    <NavigationPropertyBinding Path="VOYNM" Target="NAVOYGH"/>
+                    <NavigationPropertyBinding Path="OTHCO" Target="Currencies"/>
+                    <NavigationPropertyBinding Path="FRCOST" Target="Currencies"/>
+                    <NavigationPropertyBinding Path="TOTCO" Target="Currencies"/>
+                </EntitySet>
+                <EntitySet Name="INGXT_ITEM_BID" EntityType="create_voyage_service.INGXT_ITEM_BID">
+                    <NavigationPropertyBinding Path="VOYNO" Target="NAVOYGH"/>
+                    <NavigationPropertyBinding Path="CVALUE" Target="Currencies"/>
+                </EntitySet>
+                <EntitySet Name="NAVOYGCIT" EntityType="create_voyage_service.NAVOYGCIT">
+                    <NavigationPropertyBinding Path="VOYNO" Target="NAVOYGH"/>
+                    <NavigationPropertyBinding Path="PROCOST" Target="Currencies"/>
+                </EntitySet>
+                <EntitySet Name="Currencies" EntityType="create_voyage_service.Currencies">
+                    <NavigationPropertyBinding Path="texts" Target="Currencies_texts"/>
+                    <NavigationPropertyBinding Path="localized" Target="Currencies_texts"/>
+                </EntitySet>
+                <EntitySet Name="Currencies_texts" EntityType="create_voyage_service.Currencies_texts"/>
+            </EntityContainer>
+            <EntityType Name="NAVOYGH">
+                <Key>
+                    <PropertyRef Name="VOYNO"/>
+                </Key>
+                <Property Name="VOYNO" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="VOYNM" Type="Edm.String" MaxLength="40"/>
+                <Property Name="VNOMTK" Type="Edm.String" MaxLength="20"/>
+                <Property Name="REFDOC" Type="Edm.String" MaxLength="10"/>
+                <Property Name="DOCIND" Type="Edm.Int16"/>
+                <Property Name="VESSN" Type="Edm.String" MaxLength="20"/>
+                <Property Name="VIMO" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CHTYP" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CHPNO" Type="Edm.String" MaxLength="10"/>
+                <Property Name="CURRKEYS" Type="Edm.String" MaxLength="5"/>
+                <NavigationProperty Name="FRTCO" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="FRTCO_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="FRTCO_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="VSTAT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="VOYTY" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CARTY" Type="Edm.String" MaxLength="4"/>
+                <Property Name="CURR" Type="Edm.String" MaxLength="3"/>
+                <NavigationProperty Name="FREGHT" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="FREGHT_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="FREGHT_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="PARTY" Type="Edm.String" MaxLength="10"/>
+                <Property Name="BIDTYPE" Type="Edm.String" MaxLength="2"/>
+                <Property Name="FRCOST" Type="Edm.String" MaxLength="17"/>
+                <Property Name="FRTU" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="FRCOST_ACT" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="FRCOST_ACT_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="FRCOST_ACT_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="ZDELETE" Type="Edm.String" MaxLength="1"/>
+                <Property Name="REF_VOYNO" Type="Edm.String" MaxLength="20"/>
+            </EntityType>
+            <EntityType Name="NAVOYGIP">
+                <Key>
+                    <PropertyRef Name="VOYNM_VOYNO"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="VOYNM" Type="create_voyage_service.NAVOYGH">
+                    <ReferentialConstraint Property="VOYNM_VOYNO" ReferencedProperty="VOYNO"/>
+                </NavigationProperty>
+                <Property Name="VOYNM_VOYNO" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="VLEGN" Type="Edm.Int64"/>
+                <Property Name="PORTC" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PORTN" Type="Edm.String" MaxLength="10"/>
+                <Property Name="LOCNAM" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PDIST" Type="Edm.Decimal" Scale="3" Precision="10"/>
+                <Property Name="VSPEED" Type="Edm.Decimal" Scale="3" Precision="3"/>
+                <Property Name="PPDAYS" Type="Edm.Decimal" Scale="3" Precision="3"/>
+                <Property Name="VSDAYS" Type="Edm.Decimal" Scale="3" Precision="3"/>
+                <Property Name="VETAD" Type="Edm.Date"/>
+                <Property Name="VETAT" Type="Edm.TimeOfDay"/>
+                <Property Name="VETDD" Type="Edm.Date"/>
+                <Property Name="VETDT" Type="Edm.TimeOfDay"/>
+                <Property Name="VWEAD" Type="Edm.Decimal" Scale="3" Precision="3"/>
+                <Property Name="PSTAT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="MATNR" Type="Edm.String" MaxLength="40"/>
+                <Property Name="MAKTX" Type="Edm.String" MaxLength="40"/>
+                <Property Name="CARGS" Type="Edm.Decimal" Precision="12"/>
+                <Property Name="CARGU" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="OTHCO" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="OTHCO_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="OTHCO_code" Type="Edm.String" MaxLength="3"/>
+                <NavigationProperty Name="FRCOST" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="FRCOST_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="FRCOST_code" Type="Edm.String" MaxLength="3"/>
+                <NavigationProperty Name="TOTCO" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="TOTCO_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="TOTCO_code" Type="Edm.String" MaxLength="3"/>
+            </EntityType>
+            <EntityType Name="INGXT_ITEM_BID">
+                <Key>
+                    <PropertyRef Name="VOYNO_VOYNO"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="VOYNO" Type="create_voyage_service.NAVOYGH">
+                    <ReferentialConstraint Property="VOYNO_VOYNO" ReferencedProperty="VOYNO"/>
+                </NavigationProperty>
+                <Property Name="VOYNO_VOYNO" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="ZCODE" Type="Edm.String" MaxLength="10"/>
+                <Property Name="VALUE" Type="Edm.String" MaxLength="50"/>
+                <NavigationProperty Name="CVALUE" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="CVALUE_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="CVALUE_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="CUNIT" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CODE_DESC" Type="Edm.String" MaxLength="50"/>
+                <Property Name="REV_BID" Type="Edm.String" MaxLength="1"/>
+                <Property Name="GOOD" Type="Edm.String" MaxLength="1"/>
+                <Property Name="MAND" Type="Edm.String" MaxLength="1"/>
+                <Property Name="MUST" Type="Edm.String" MaxLength="1"/>
+                <Property Name="ZMIN" Type="Edm.Decimal" Precision="3"/>
+                <Property Name="ZMAX" Type="Edm.Decimal" Precision="3"/>
+            </EntityType>
+            <EntityType Name="NAVOYGCIT">
+                <Key>
+                    <PropertyRef Name="VOYNO_VOYNO"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="VOYNO" Type="create_voyage_service.NAVOYGH">
+                    <ReferentialConstraint Property="VOYNO_VOYNO" ReferencedProperty="VOYNO"/>
+                </NavigationProperty>
+                <Property Name="VOYNO_VOYNO" Type="Edm.String" MaxLength="20" Nullable="false"/>
+                <Property Name="VLEGN" Type="Edm.Int64"/>
+                <Property Name="COSTCODE" Type="Edm.String" MaxLength="4"/>
+                <Property Name="COSTU" Type="Edm.String" MaxLength="10"/>
+                <Property Name="PRCUNIT" Type="Edm.String" MaxLength="3"/>
+                <NavigationProperty Name="PROCOST" Type="create_voyage_service.Currencies">
+                    <ReferentialConstraint Property="PROCOST_code" ReferencedProperty="code"/>
+                </NavigationProperty>
+                <Property Name="PROCOST_code" Type="Edm.String" MaxLength="3"/>
+                <Property Name="COSTCURR" Type="Edm.String" MaxLength="5"/>
+                <Property Name="CSTCODES" Type="Edm.String" MaxLength="35"/>
+                <Property Name="COST_CHECK" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="Currencies">
+                <Key>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+                <Property Name="symbol" Type="Edm.String" MaxLength="5"/>
+                <Property Name="minorUnit" Type="Edm.Int16"/>
+                <NavigationProperty Name="texts" Type="Collection(create_voyage_service.Currencies_texts)">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="localized" Type="create_voyage_service.Currencies_texts">
+                    <ReferentialConstraint Property="code" ReferencedProperty="code"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="Currencies_texts">
+                <Key>
+                    <PropertyRef Name="locale"/>
+                    <PropertyRef Name="code"/>
+                </Key>
+                <Property Name="locale" Type="Edm.String" MaxLength="14" Nullable="false"/>
+                <Property Name="name" Type="Edm.String" MaxLength="255"/>
+                <Property Name="descr" Type="Edm.String" MaxLength="1000"/>
+                <Property Name="code" Type="Edm.String" MaxLength="3" Nullable="false"/>
+            </EntityType>
+            <Annotations Target="create_voyage_service.NAVOYGH/FRTCO">
+                <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                    <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                    </Annotations>
+                    <Annotations Target="create_voyage_service.NAVOYGH/FRTCO_code">
+                        <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                            <Annotation Term="Common.ValueList">
+                                <Record Type="Common.ValueListType">
+                                    <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                        <PropertyValue Property="Parameters">
+                                            <Collection>
+                                                <Record Type="Common.ValueListParameterInOut">
+                                                    <PropertyValue Property="LocalDataProperty" PropertyPath="FRTCO_code"/>
+                                                    <PropertyValue Property="ValueListProperty" String="code"/>
+                                                </Record>
+                                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                                    <PropertyValue Property="ValueListProperty" String="name"/>
+                                                </Record>
+                                            </Collection>
+                                        </PropertyValue>
+                                    </Record>
+                                </Annotation>
+                                <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                </Annotations>
+                                <Annotations Target="create_voyage_service.NAVOYGH/FREGHT">
+                                    <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                        <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                        </Annotations>
+                                        <Annotations Target="create_voyage_service.NAVOYGH/FREGHT_code">
+                                            <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                <Annotation Term="Common.ValueList">
+                                                    <Record Type="Common.ValueListType">
+                                                        <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                            <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                            <PropertyValue Property="Parameters">
+                                                                <Collection>
+                                                                    <Record Type="Common.ValueListParameterInOut">
+                                                                        <PropertyValue Property="LocalDataProperty" PropertyPath="FREGHT_code"/>
+                                                                        <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                    </Record>
+                                                                    <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                        <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                    </Record>
+                                                                </Collection>
+                                                            </PropertyValue>
+                                                        </Record>
+                                                    </Annotation>
+                                                    <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                    </Annotations>
+                                                    <Annotations Target="create_voyage_service.NAVOYGH/FRCOST_ACT">
+                                                        <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                            <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                            </Annotations>
+                                                            <Annotations Target="create_voyage_service.NAVOYGH/FRCOST_ACT_code">
+                                                                <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                    <Annotation Term="Common.ValueList">
+                                                                        <Record Type="Common.ValueListType">
+                                                                            <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                                                <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                                                <PropertyValue Property="Parameters">
+                                                                                    <Collection>
+                                                                                        <Record Type="Common.ValueListParameterInOut">
+                                                                                            <PropertyValue Property="LocalDataProperty" PropertyPath="FRCOST_ACT_code"/>
+                                                                                            <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                        </Record>
+                                                                                        <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                            <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                        </Record>
+                                                                                    </Collection>
+                                                                                </PropertyValue>
+                                                                            </Record>
+                                                                        </Annotation>
+                                                                        <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                        </Annotations>
+                                                                        <Annotations Target="create_voyage_service.NAVOYGIP/createdAt">
+                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                            <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                            <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                            </Annotations>
+                                                                            <Annotations Target="create_voyage_service.NAVOYGIP/createdBy">
+                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                    <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                    </Annotations>
+                                                                                    <Annotations Target="create_voyage_service.NAVOYGIP/modifiedAt">
+                                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                        </Annotations>
+                                                                                        <Annotations Target="create_voyage_service.NAVOYGIP/modifiedBy">
+                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                </Annotations>
+                                                                                                <Annotations Target="create_voyage_service.NAVOYGIP/OTHCO">
+                                                                                                    <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                        <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                        </Annotations>
+                                                                                                        <Annotations Target="create_voyage_service.NAVOYGIP/OTHCO_code">
+                                                                                                            <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                <Annotation Term="Common.ValueList">
+                                                                                                                    <Record Type="Common.ValueListType">
+                                                                                                                        <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                                                                                            <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                                                                                            <PropertyValue Property="Parameters">
+                                                                                                                                <Collection>
+                                                                                                                                    <Record Type="Common.ValueListParameterInOut">
+                                                                                                                                        <PropertyValue Property="LocalDataProperty" PropertyPath="OTHCO_code"/>
+                                                                                                                                        <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                                                                    </Record>
+                                                                                                                                    <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                                                                        <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                                                                    </Record>
+                                                                                                                                </Collection>
+                                                                                                                            </PropertyValue>
+                                                                                                                        </Record>
+                                                                                                                    </Annotation>
+                                                                                                                    <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                    </Annotations>
+                                                                                                                    <Annotations Target="create_voyage_service.NAVOYGIP/FRCOST">
+                                                                                                                        <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                            <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                            </Annotations>
+                                                                                                                            <Annotations Target="create_voyage_service.NAVOYGIP/FRCOST_code">
+                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                                    <Annotation Term="Common.ValueList">
+                                                                                                                                        <Record Type="Common.ValueListType">
+                                                                                                                                            <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                                                                                                                <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                                                                                                                <PropertyValue Property="Parameters">
+                                                                                                                                                    <Collection>
+                                                                                                                                                        <Record Type="Common.ValueListParameterInOut">
+                                                                                                                                                            <PropertyValue Property="LocalDataProperty" PropertyPath="FRCOST_code"/>
+                                                                                                                                                            <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                                                                                        </Record>
+                                                                                                                                                        <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                                                                                            <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                                                                                        </Record>
+                                                                                                                                                    </Collection>
+                                                                                                                                                </PropertyValue>
+                                                                                                                                            </Record>
+                                                                                                                                        </Annotation>
+                                                                                                                                        <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                                        </Annotations>
+                                                                                                                                        <Annotations Target="create_voyage_service.NAVOYGIP/TOTCO">
+                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                                                <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                                                </Annotations>
+                                                                                                                                                <Annotations Target="create_voyage_service.NAVOYGIP/TOTCO_code">
+                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                                                        <Annotation Term="Common.ValueList">
+                                                                                                                                                            <Record Type="Common.ValueListType">
+                                                                                                                                                                <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                                                                                                                                    <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                                                                                                                                    <PropertyValue Property="Parameters">
+                                                                                                                                                                        <Collection>
+                                                                                                                                                                            <Record Type="Common.ValueListParameterInOut">
+                                                                                                                                                                                <PropertyValue Property="LocalDataProperty" PropertyPath="TOTCO_code"/>
+                                                                                                                                                                                <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                                                                                                            </Record>
+                                                                                                                                                                            <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                                                                                                                <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                                                                                                            </Record>
+                                                                                                                                                                        </Collection>
+                                                                                                                                                                    </PropertyValue>
+                                                                                                                                                                </Record>
+                                                                                                                                                            </Annotation>
+                                                                                                                                                            <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                                                            </Annotations>
+                                                                                                                                                            <Annotations Target="create_voyage_service.INGXT_ITEM_BID/createdAt">
+                                                                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                                                                                                                </Annotations>
+                                                                                                                                                                <Annotations Target="create_voyage_service.INGXT_ITEM_BID/createdBy">
+                                                                                                                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                    <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                                                                                                        </Annotations>
+                                                                                                                                                                        <Annotations Target="create_voyage_service.INGXT_ITEM_BID/modifiedAt">
+                                                                                                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                                                                                                            </Annotations>
+                                                                                                                                                                            <Annotations Target="create_voyage_service.INGXT_ITEM_BID/modifiedBy">
+                                                                                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                    <Annotations Target="create_voyage_service.INGXT_ITEM_BID/CVALUE">
+                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                                                                                            <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                            <Annotations Target="create_voyage_service.INGXT_ITEM_BID/CVALUE_code">
+                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                                                                                                    <Annotation Term="Common.ValueList">
+                                                                                                                                                                                                        <Record Type="Common.ValueListType">
+                                                                                                                                                                                                            <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                                                                                                                                                                                <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                                                                                                                                                                                <PropertyValue Property="Parameters">
+                                                                                                                                                                                                                    <Collection>
+                                                                                                                                                                                                                        <Record Type="Common.ValueListParameterInOut">
+                                                                                                                                                                                                                            <PropertyValue Property="LocalDataProperty" PropertyPath="CVALUE_code"/>
+                                                                                                                                                                                                                            <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                                                                                                                                                        </Record>
+                                                                                                                                                                                                                        <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                                                                                                                                                            <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                                                                                                                                                        </Record>
+                                                                                                                                                                                                                    </Collection>
+                                                                                                                                                                                                                </PropertyValue>
+                                                                                                                                                                                                            </Record>
+                                                                                                                                                                                                        </Annotation>
+                                                                                                                                                                                                        <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                        <Annotations Target="create_voyage_service.NAVOYGCIT/createdAt">
+                                                                                                                                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                                                            <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                            <Annotations Target="create_voyage_service.NAVOYGCIT/createdBy">
+                                                                                                                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                    <Annotations Target="create_voyage_service.NAVOYGCIT/modifiedAt">
+                                                                                                                                                                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                        <Annotations Target="create_voyage_service.NAVOYGCIT/modifiedBy">
+                                                                                                                                                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                                                                                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                                <Annotations Target="create_voyage_service.NAVOYGCIT/PROCOST">
+                                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                                                                                                                                        <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                                        <Annotations Target="create_voyage_service.NAVOYGCIT/PROCOST_code">
+                                                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Currency}"/>
+                                                                                                                                                                                                                                                <Annotation Term="Common.ValueList">
+                                                                                                                                                                                                                                                    <Record Type="Common.ValueListType">
+                                                                                                                                                                                                                                                        <PropertyValue Property="Label" String="{i18n>Currency}"/>
+                                                                                                                                                                                                                                                            <PropertyValue Property="CollectionPath" String="Currencies"/>
+                                                                                                                                                                                                                                                            <PropertyValue Property="Parameters">
+                                                                                                                                                                                                                                                                <Collection>
+                                                                                                                                                                                                                                                                    <Record Type="Common.ValueListParameterInOut">
+                                                                                                                                                                                                                                                                        <PropertyValue Property="LocalDataProperty" PropertyPath="PROCOST_code"/>
+                                                                                                                                                                                                                                                                        <PropertyValue Property="ValueListProperty" String="code"/>
+                                                                                                                                                                                                                                                                    </Record>
+                                                                                                                                                                                                                                                                    <Record Type="Common.ValueListParameterDisplayOnly">
+                                                                                                                                                                                                                                                                        <PropertyValue Property="ValueListProperty" String="name"/>
+                                                                                                                                                                                                                                                                    </Record>
+                                                                                                                                                                                                                                                                </Collection>
+                                                                                                                                                                                                                                                            </PropertyValue>
+                                                                                                                                                                                                                                                        </Record>
+                                                                                                                                                                                                                                                    </Annotation>
+                                                                                                                                                                                                                                                    <Annotation Term="Core.Description" String="{i18n>CurrencyCode.Description}"/>
+                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                    <Annotations Target="create_voyage_service.Currencies">
+                                                                                                                                                                                                                                                        <Annotation Term="UI.Identification">
+                                                                                                                                                                                                                                                            <Collection>
+                                                                                                                                                                                                                                                                <Record Type="UI.DataField">
+                                                                                                                                                                                                                                                                    <PropertyValue Property="Value" Path="name"/>
+                                                                                                                                                                                                                                                                </Record>
+                                                                                                                                                                                                                                                            </Collection>
+                                                                                                                                                                                                                                                        </Annotation>
+                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                    <Annotations Target="create_voyage_service.Currencies/name">
+                                                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                                                        <Annotations Target="create_voyage_service.Currencies/descr">
+                                                                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                                                                            <Annotations Target="create_voyage_service.Currencies/code">
+                                                                                                                                                                                                                                                                <Annotation Term="Common.Text" Path="name"/>
+                                                                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>CurrencyCode}"/>
+                                                                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                                                                <Annotations Target="create_voyage_service.Currencies/symbol">
+                                                                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>CurrencySymbol}"/>
+                                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                                    <Annotations Target="create_voyage_service.Currencies/minorUnit">
+                                                                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>CurrencyMinorUnit}"/>
+                                                                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                                                                        <Annotations Target="create_voyage_service.Currencies_texts/locale">
+                                                                                                                                                                                                                                                                            <Annotation Term="Common.Label" String="{i18n>LanguageCode}"/>
+                                                                                                                                                                                                                                                                            </Annotations>
+                                                                                                                                                                                                                                                                            <Annotations Target="create_voyage_service.Currencies_texts/name">
+                                                                                                                                                                                                                                                                                <Annotation Term="Common.Label" String="{i18n>Name}"/>
+                                                                                                                                                                                                                                                                                </Annotations>
+                                                                                                                                                                                                                                                                                <Annotations Target="create_voyage_service.Currencies_texts/descr">
+                                                                                                                                                                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>Description}"/>
+                                                                                                                                                                                                                                                                                    </Annotations>
+                                                                                                                                                                                                                                                                                    <Annotations Target="create_voyage_service.Currencies_texts/code">
+                                                                                                                                                                                                                                                                                        <Annotation Term="Common.Text" Path="name"/>
+                                                                                                                                                                                                                                                                                        <Annotation Term="Common.Label" String="{i18n>CurrencyCode}"/>
+                                                                                                                                                                                                                                                                                        </Annotations>
+                                                                                                                                                                                                                                                                                    </Schema>
+                                                                                                                                                                                                                                                                                </edmx:DataServices>
+                                                                                                                                                                                                                                                                            </edmx:Edmx>

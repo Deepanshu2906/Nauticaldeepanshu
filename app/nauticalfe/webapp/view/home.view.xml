@@ -1,0 +1,40 @@
+
+<mvc:View xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards"
+xmlns:form="sap.ui.layout.form"
+ controllerName="nauticalfe.controller.home"
+    xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+
+    
+   
+    
+    <GenericTile id="_IDGenGenericTile1" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Nautical" subheader="Create Voyage"
+                press=".onPress" >
+        <TileContent id="_IDGenTileContent1">
+        <ImageContent id="_IDGenImageContent1" src="../images/pic.png"></ImageContent>
+        </TileContent>
+    </GenericTile>
+ 
+    <GenericTile id="_IDGenGenericTile2" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Nautical" subheader="Live Bidding Controller" press=".onPress2">
+        <TileContent id="_IDGenTileContent2">
+           
+        </TileContent>
+    </GenericTile>
+ 
+    <GenericTile id="_IDGenGenericTile23" class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="Nautical" subheader="Dashboard" press=".onPress3">
+        <TileContent id="_IDGenTileContent3">
+        <ImageContent id="_IDGenImageContent2" src="../images/pic.png"></ImageContent>
+        </TileContent>
+    </GenericTile>
+ 
+
+       
+</mvc:View>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

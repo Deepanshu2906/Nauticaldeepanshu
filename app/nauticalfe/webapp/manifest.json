@@ -1,0 +1,225 @@
+{
+  "_version": "1.58.0",
+  "sap.app": {
+    "id": "nauticalfe",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.11.4",
+      "toolsId": "b3e59697-ed1b-4355-8910-4c0b2881c281"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/create-voyage-service/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "nauticalfe.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "nauticalfe.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "RouteView2",
+          "pattern": "page2",
+          "target": [
+            "TargetView2"
+          ]
+        },
+        {
+          "name": "RouteView3",
+          "pattern": "page3",
+          "target": [
+            "TargetView3"
+          ]
+        },
+        {
+          "name": "RouteBidCont",
+          "pattern": "Bidding",
+          "target": [
+            "TargetBidCont"
+          ]
+        },
+        {
+          "name": "RouteBidObj",
+          "pattern": "BiddingObject/{bidObjPath}",
+          "target": [
+            "TargetBidObj"
+          ]
+        },
+        {
+          "name": "Routedash",
+          "pattern": "dashboard",
+          "target": [
+            "Targetdash"
+          ]
+        },
+        {
+          "name": "TransView",
+          "pattern": "TransViewObj",
+          "target": [
+            "TargetTransView"
+          ]
+        },
+        {
+          "name": "MastView",
+          "pattern": "MastViewObj",
+          "target": [
+            "TargetMastView"
+          ]
+        }
+
+      ],
+      "targets": {
+        "TargetView1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "homeview",
+          "viewName": "home"
+        },
+        "TargetView2": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View2_createVoyageForm",
+          "viewName": "createVoyageForm"
+        },
+        "TargetView3": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View3",
+          "viewName": "View3"
+        },
+        "TargetBidCont": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "BidCont",
+          "viewName": "BidCont"
+        },
+        "TargetBidObj": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "BidObj",
+          "viewName": "BidObj"
+        },
+        "Targetdash": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "dash",
+          "viewName": "dash"
+        },
+        "TargetTransView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "TransView",
+          "viewName": "TransView"
+        },
+        "TargetMastView": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "MastView",
+          "viewName": "MastView"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "nauticalfe.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

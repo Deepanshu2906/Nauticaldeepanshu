@@ -1,0 +1,267 @@
+/* Enter your custom styles here */
+/* Enter your custom styles here */
+.sapUshellShellHeader{
+    background-color: black;
+}
+
+  .layout{
+    margin-top: -7%;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid rgb(238, 234, 234);
+    
+  }
+  /* for border*/
+  #application-nauticalfe-display-component---View2--mainSplitter-content-1{
+    border: 2px solid grey;
+    height: 400px;
+}
+#application-nauticalfe-display-component---View2--mainSplitter-content-2{
+    border: 2px solid grey;
+    height: 400px;
+}
+#application-nauticalfe-display-component---View2--mainSplitter-content-0{
+    border: 2px solid grey;
+    height: 400px;
+}
+/*for button color*/
+.sapMBtnInner.sapMBtnText {
+    color: red;
+    border: 1px solid red;
+     
+}
+/*for help button color*/
+/*.sapUiIcon::before{
+    color: rgb(245, 131, 131);
+    
+}*/
+#application-nauticalfe-display-component---View2--_IDGenButton4-img{
+    color: red; /*for refresh button*/
+}
+
+/*for value help button*/
+#application-nauticalfe-display-component---View2--_IDGenInput2-vhi{
+    color: rgb(245, 131, 131);
+}
+#application-nauticalfe-display-component---View2--_IDGenInput3-vhi{
+    color: rgb(245, 131, 131);
+}
+#application-nauticalfe-display-component---View2--_IDGenInput4-vhi{
+    color: rgb(245, 131, 131);
+}
+#application-nauticalfe-display-component---View2--_IDGenInput5-vhi{
+    color: rgb(245, 131, 131);
+}
+/*------------*/
+
+
+
+.sapUiSizeCompact .sapMBtnInner{
+    color: red;
+    border: 1px solid red;
+}
+#application-nauticalfe-display-component---View2--_IDGenButton4-inner{
+    color: red;
+}
+#application-nauticalfe-display-component---View2--_IDGenButton3-inner{
+    background-color: red;
+    color: white;
+}
+#container-nauticalfe---View2--_IDGenButton3-BDI-content{
+    background-color: red;
+    color: white;
+}
+
+/*for button hover*/
+.sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive) >
+ .sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnDefault, .sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive) >
+ .sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnBack, .sapMBtn:hover:not(.sapMBtnDisabled):not(.sapMSBActive) >
+ .sapMBtnHoverable:not(.sapMBtnDisabled):not(.sapMBtnActive):not(.sapMToggleBtnPressed):not(.sapMBtnTransparent).sapMBtnGhost {
+    color: red;
+    background-color: rgba(234, 144, 130, 0.299);
+}
+#__data15{
+    padding: 7px;
+}
+#__data17{
+    padding: 7px;
+}
+#__data18{
+    padding: 7px;
+}
+.sapMListTblCell{
+    border: 1px solid rgb(246, 243, 243);
+}
+
+/*for view 3 headers*/
+
+#application-nauticalfe-display-component---View3--header2{
+    background-color:white
+}
+#application-nauticalfe-display-component---View3--header3{
+    background-color:rgb(25, 134, 134);
+    height: 40px;
+}
+#application-nauticalfe-display-component---View3--header4{
+    background-color:rgb(25, 134, 134);
+    height: 40px;
+}
+#application-nauticalfe-display-component---View3--header5{
+    background-color:rgb(25, 134, 134);
+    height: 45px;
+}
+#container-nauticalfe---View3--header3{
+    background-color: rgb(18, 116, 116) !important;
+    height:45px;
+}
+#container-nauticalfe---View3--header4{
+    background-color: rgb(18, 116, 116) !important;
+    height: 40px;
+}
+#application-nauticalfe-display-component---View3--link2{
+    color:black;
+    margin-left: 45%;
+}
+
+.freighttxt{
+    color: white !important;
+}
+.freightback{
+    background-color: rgb(41, 178, 178) !important;
+    height: 40px !important;
+}
+.heading1{
+    color:black !important;
+    margin-left: 45% !important; 
+}
+
+/* bidding controller page*/
+
+.biddingTileflex{
+    justify-content: space-around;
+    justify-content: center;
+}
+
+/* bid page icon */
+#application-nauticalfe-display-component---BidCont--openTileNumericId-value-inner{
+    color: orange;
+    
+}
+#application-nauticalfe-display-component---BidCont--closeTileNumericId-value-inner{
+    color: green;
+}
+#application-nauticalfe-display-component---BidCont--ongoingTileNumericId-value-inner{
+    color: orange;
+}
+
+
+.sapMListTblSelCol, .sapMListTblCell, .sapMListTblNavCol {
+    border: none;
+}
+.ongoingPanelPanel{
+    padding: 30px;
+    border:1px solid black;
+    background-color: white;
+    padding: 30px;
+    margin: 1%;
+    border-radius: 0%;
+    margin-right: 5%;
+}
+#application-nauticalfe-display-component---BidCont--PanelId-header{
+    border-bottom: none;
+}
+
+.sapMColumnHeader {
+    background-color: rgb(240, 235, 235);
+    border-top: 1px solid rgb(187, 186, 186);
+}
+#application-nauticalfe-display-component---BidCont--table-tblHeadNav{
+    background-color: rgb(240, 235, 235);
+    border-top: 1px solid rgb(187, 186, 186);
+
+}
+
+#application-nauticalfe-display-component---BiddingController--header2{
+    border-bottom: 1px solid rgb(187, 186, 186);
+}
+.Tile{
+    border-radius: 0%;
+}
+/* for bid obj page*/
+.bpanel1{
+    width: 20rem ;
+}
+
+.vPanel{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.text1{
+    display: block;
+}
+.botxt2{
+    margin-top: 15%;
+}
+.botxt3{
+    margin-top: 5%!important;
+    
+}
+.botxt1{
+   margin-top: 3%;
+   font-size: 22px;
+}
+.botxt7{
+    font-size:15px;
+}
+.vendorListHeading{
+    justify-content: space-around;
+    padding-top: 5rem;
+}
+.vTHeading{
+    font-size: 20px;
+}
+.cql1{
+    padding-top:8px;
+}
+#application-nauticalfe-display-component---BidObj--table-tblHeadNav{
+    background-color: rgb(240, 235, 235);
+    border-top: 1px solid rgb(187, 186, 186);
+
+}
+#application-nauticalfe-display-component---BidObj--boTxt6{
+    color: green;
+    margin-top: 15%;
+    font-size: 24px;
+}
+/*dashboard*/
+.vPanel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5 rem;
+}
+.panel{
+    padding: 40px;
+}
+.panel1{
+  margin-top: 8%;
+}
+.Trans{
+    padding: 10%; margin: 10% 15%;
+}
+.Mastr{
+    padding: 10%; margin: 10% 15%;
+}
+
+/*transaction data css*/
+.voy,.right,.FS {
+    margin: 5%;
+}
+/*master data css*/
+.one,.two,.three,.four,.five{
+    margin: 2%; margin-top: 7%;
+}
