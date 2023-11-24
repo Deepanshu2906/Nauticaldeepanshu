@@ -9,30 +9,36 @@ sap.ui.define(
   ],
   function (BaseController, ODataModel, Context, MessageBox,ODataContextBinding, MessageToast) {
     "use strict";
+    var aSelectedIds=[];
 
     return BaseController.extend("nauticalfe.controller.createVoyageTypeMast", {
       onInit: function () {
          // Fetch the table
-        this.oTable = this.byId("createTypeTable");
+        // this.oTable = this.byId("createTypeTable");
 
-         this.oTable.bindItems({
-          path: "/VOYTYP",
-          template: new sap.m.ColumnListItem({
-            cells: [
-              new sap.m.Input({ value: "{VOYCD}" }),
-              new sap.m.Input({ value: "{VOYDES}" })
-              // Add more cells if needed for other fields
-            ]
-          })
-        });
+         
          // Ensure minimum of 6 rows are displayed
-         this.ensureMinimumRows();
          
          
         } ,
-        ensureMinimumRows: function () {
+        onTableUpdateFinished: function (oEvent) {
+          var oTable = oEvent.getSource();
+          
+          // Get the binding information
+          var oBindingInfo = oTable.getBindingInfo("items");
+          
+          // Get the number of items displayed in the table
+          var iDisplayedItems = oTable.getItems().length;
+          
+          // Log or display the information
+          console.log("Binding Path:", oBindingInfo.path);
+          console.log("Number of Items Displayed:", iDisplayedItems);
+          this.ensureMinimumRows(iDisplayedItems);
+        },
+      ensureMinimumRows: function (iDisplayedItems) {
         var oTable = this.byId("createTypeTable");
-        var numRowsToAdd = 6 - oTable.getItems().length;
+        var numRowsToAdd = 6 - iDisplayedItems;
+        console.log(numRowsToAdd);
         if (numRowsToAdd > 0) {
           for (var i = 0; i < numRowsToAdd; i++) {
             var oRow = new sap.m.ColumnListItem(); // Create an empty row
@@ -43,8 +49,7 @@ sap.ui.define(
             oTable.addItem(oRow); // Add the empty row to the table
           }
         }
-      }
-      ,
+      },
       onCreate: function () {
         var oView = this.getView();
 
@@ -78,6 +83,22 @@ sap.ui.define(
                     .catch(function (err) {
                         console.log("error", err);
                     })
+      },
+      selectedItems : function(oEvent){
+        // console.log("hello");
+        var oTable = oEvent.getSource();
+        var aSelectedItems = oTable.getSelectedItems();
+        
+         aSelectedIds = aSelectedItems.map(function(oSelectedItem) {
+            return oSelectedItem.getBindingContext().getProperty("VOYCD")
+        });
+       console.log(aSelectedIds);
+        // console.log("Selected Travel IDs: " + aSelectedTravelIds.join(","));
+        return aSelectedIds;
+             
+      },
+      onUpdate : function(){
+
       },
       onDeleteVoyageType : function () {
 

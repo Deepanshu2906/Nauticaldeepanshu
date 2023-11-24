@@ -16,12 +16,12 @@ xmlns:form="sap.ui.layout.form"
       
       <Button id="_IDGenButton3" text="create" press="onCreate"></Button>
       <Button id="_IDGenButton4" text="Delete" press="onDeleteVoyageType"></Button>
-      <Button id="_IDGenButton5" text="update"></Button>
-      <Button id="_IDGenButton6" text="update"></Button>
+      <Button id="_IDGenButton5" text="edit"></Button>
+      <Button id="_IDGenButton6" text="update" press="onUpdate"></Button>
 
       </contentLeft>
     </Bar>
-      <Table id="createTypeTable" mode="MultiSelect" items="{/VOYTYP}" >
+      <Table id="createTypeTable" mode="MultiSelect" items="{/VOYTYP}"  updateFinished="onTableUpdateFinished" selectionChange="selectedItems">
 
         <columns>
           <Column id="_IDGenColumn1" >

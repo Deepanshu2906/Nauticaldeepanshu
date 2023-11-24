@@ -41,14 +41,14 @@ const nauticalService = (srv) => {
       console.log( VOYDES ,data,params);
 
       // Check if the travelId is provided and is a valid format
-      if (!VOYCD || typeof VOYCD !== 'string') {
-        throw new Error('Invalid or missing travelId');
-      }
+      // if (!VOYCD || typeof VOYCD !== 'string') {
+      //   throw new Error('Invalid or missing travelId');
+      // }
 
       // Check if the updatedData is provided and is an object
-      if (!VOYDES || typeof VOYDES !== 'string') {
-        throw new Error('Invalid or missing updatedData');
-      }
+      // if (!VOYDES || typeof VOYDES !== 'string') {
+      //   throw new Error('Invalid or missing updatedData');
+      // }
 
       // Use the travelId to identify the Travel entity to update
       const updatedVOYTYPE = await cds.tx(req).run(
@@ -58,9 +58,9 @@ const nauticalService = (srv) => {
       );
 
       // Check if any records were updated
-      if (updatedVOYTYPE.length === 0) {
-        throw new Error(`VOYAGE TYPE with code  ${VOYCD} not found`);
-      }
+      // if (updatedVOYTYPE.length === 0) {
+      //   throw new Error(`VOYAGE TYPE with code  ${VOYCD} not found`);
+      // }
       console.log( updatedVOYTYPE);
       return updatedVOYTYPE[0]; // Return the updated Travel entity
     });

@@ -6,16 +6,16 @@ POST http://localhost:4004/odata/v4/nautical/VOYTYP
 Content-Type: application/json
 
 {
-    "VOYCD":"1237",
+    "VOYCD":"1236",
     "VOYDES":" CHARTER  jijuh333"
 }
 
 ###PATCH VOYAGE
 
-PATCH http://localhost:4004/odata/v4/nautical/VOYTYP/"1235"
+PATCH http://localhost:4004/odata/v4/nautical/VOYTYP/1236
 Content-Type: application/json
 
 {
-    "VOYCD":"1235",
-    "VOYDES":"SPECIAL CHARTER  changed 2nd"
+    "VOYCD":"1236",
+    "VOYDES":"SPECIAL CHARTER  changed 3rd"
 }
