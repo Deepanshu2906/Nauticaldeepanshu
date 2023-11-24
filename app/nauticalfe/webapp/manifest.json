@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/odata/v4/create-voyage-service/",
+        "uri": "/odata/v4/nautical/",
         "type": "OData",
         "settings": {
           "annotations": [],

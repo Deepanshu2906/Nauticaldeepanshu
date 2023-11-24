@@ -45,6 +45,7 @@ sap.ui.define([
             contentHeight: "60%",
             content: new sap.m.Table({
                 mode: sap.m.ListMode.SingleSelectMaster,
+                items:"{/VOYTYP}",
                 columns: [
                     new sap.m.Column({
                         header: new sap.m.Text({ text: "Voyage Type" }),
@@ -56,16 +57,11 @@ sap.ui.define([
                 items: [
                     new sap.m.ColumnListItem({
                         cells: [
-                            new sap.m.Text({ text: "1001" }),
-                            new sap.m.Text({ text: "Voyage Charter" }),
+                            new sap.m.Text({ text: "{VOYCD}" }),
+                            new sap.m.Text({ text: "{VOYDES}" }),
                         ],
                     }),
-                    new sap.m.ColumnListItem({
-                        cells: [
-                            new sap.m.Text({ text: "1002" }),
-                            new sap.m.Text({ text: "Time Charter" }),
-                        ],
-                    }),
+                   
                     // Add more ColumnListItems as needed
                 ],
                 selectionChange: function (oEvent) {

@@ -3,20 +3,20 @@ using {
     Currency
 } from '@sap/cds/common';
 
-//Voyage Master Data table
+//Voyage Master 
 namespace NAUTI_MAS;
 
 
 //voyage type table
 entity VOYTYP {
-    VOYCD  : String(4);    @assert.unique //Voyage code
+    key VOYCD  : String(4) ; //Voyage code
     VOYDES : String(40); //Voyage Code Description
 };
 
 //Cargo Type Master table
 entity CARTYP {
 
-    CARCD  : String(4);    @assert.unique //Vessel Type
+    CARCD  : String(4)   @assert.unique; //Vessel Type
     CARDES : String(40); //Cargo type description
 };
 
@@ -33,7 +33,7 @@ entity CURR {
 //Bid Master Data table
 entity MAS_BID {
 
-    BNAME        : String(12);    @assert.unique //This field represents a unique username.
+    BNAME        : String(12)    @assert.unique; //This field represents a unique username.
 
     CODE         : String(10); //This field represents a unique Code
 
@@ -78,8 +78,7 @@ entity NAVOYGUOM {
 //Cost Component table
 entity NAVOYGC {
 
-    COSTCODE : String(4);
-    @assert.unique //cost code
+    COSTCODE : String(4) @assert.unique; //cost code
 
     CSTCODES : String(35); //cost code description
 
@@ -89,7 +88,7 @@ entity NAVOYGC {
 //Event Master Data table
 entity EVENT_MAS {
 
-    EVTTY : String(20);    @assert.unique //Event type
+    EVTTY : String(20)    @assert.unique; //Event type
 
     TEXT  : String(40); //Event text description
 

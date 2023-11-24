@@ -1,1 +1,1 @@
-using create_voyage_service as service from '../../srv/create_voyage_service';
+using Nautical  from '../../srv/service';

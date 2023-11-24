@@ -6,30 +6,22 @@ using {
     temporal,
     sap.common.CodeList as CodeList
 } from '@sap/cds/common';
+//Create Voyage Database
+namespace create_voyage;
 
 
-namespace transactionalData;
-
-
-type GUID : String(20);
-
-entity Statuses : CodeList {
-
-    key code : String(3)
-
-}
 
 
 // Voyage header date  Table
 entity NAVOYGH {
 
-    key VOYNO      : GUID@assert.unique; // Voyage Number
-        VOYNM      : String(40); // Voyage Name
+        VOYNO      : Association to NAVOYGIP @assert.unique; // Voyage Number
+        VOYNM      : String(40)@assert.unique; // Voyage Name
         VNOMTK     : String(20); // Nomination Number
         REFDOC     : String(10); //   Document Ref
         DOCIND     : Int16; // Ref Doc. ind  --> /Ingenx/REF_DOC
         VESSN      : String(20); // Vessel Name
-        VIMO       : String(20); // Vessel IMO Number --> TWS Vehicle Master
+        VIMO       : String(20);@assert.unique // Vessel IMO Number --> TWS Vehicle Master
         CHTYP      : String(5); // Charter Type
         CHPNO      : String(10); // Freight Contract -> SAP Freight Contract
         CURRKEYS   : String(5); // Currency Key
@@ -49,12 +41,12 @@ entity NAVOYGH {
 
 }
 
-// Voyage Item level data is captured in the table “/INGXT/NAVOYGIP
-entity NAVOYGIP : managed {
+// Voyage Item level data 
+entity NAVOYGIP  {
 
-    key VOYNM  : Association to NAVOYGH; // Voyage  Number  ->  NAVOYGH-VOYNM
-        VLEGN  : Integer64; // Numeric( 10)
-        PORTC  : String(10); // Internation Unified Port code - unique
+        VOYNM  : Association to  NAVOYGH ; // Voyage  Number  ->  NAVOYGH-VOYNM
+        VLEGN  : Int64@assert.unique; // Numeric( 10)
+        PORTC  : String(10)@assert.unique; // Internation Unified Port code - unique
         PORTN  : String(10); // commnon used port name
         LOCNAM : String(10); // ref for Oil TSW   --> OIJNOMI-LOCNAM
         PDIST  : Decimal(10, 3); // distnce betwenn two port from API
@@ -69,9 +61,7 @@ entity NAVOYGIP : managed {
         PSTAT  : String(5); // Status (In Planning, Vetting in Progress, Vetting Completed, Voyage Commenced)
         MATNR  : String(40); // Material Number
         MAKTX  : String(40); // Material Description
-
         CARGS  : Decimal(12); // Cargo Size
-
         CARGU  : String(10); // unit of measure ment
         OTHCO  : Currency; //  additional charge for voyage
         FRCOST : Currency; // total freight cost
@@ -79,14 +69,13 @@ entity NAVOYGIP : managed {
 
 
 }
+//Bid details for voyage
+entity ITEM_BID  {
 
-entity INGXT_ITEM_BID : managed {
-
-    key VOYNO     : Association to NAVOYGH; // unique voyage no.
+         VOYNO     : Association to NAVOYGH@assert.unique; // unique voyage no.
         ZCODE     : String(10); // This field is a text field allowing users to enter Data.
         VALUE     : String(50); // head data of biding details
         CVALUE    : Currency; //  Revaluation amount on back-posting to a previous period
-
         CUNIT     : String(5); // currency key unit   --> NAVOYGCUR
         CODE_DESC : String(50); // code description
         REV_BID   : String(1); // relevant for Biding
@@ -99,10 +88,10 @@ entity INGXT_ITEM_BID : managed {
 }
 
 // Cost code Item details saved in  Table NAVOYGCIT
-entity NAVOYGCIT : managed {
-    key VOYNO      : Association to NAVOYGH; // unique voyage no.
-        VLEGN      : Int64; // NUMERIC(10)   Unique leg Number
-        COSTCODE   : String(4); //Unique cost code --> NAVOTGC
+entity NAVOYGCIT  {
+        VOYNO      : Association to NAVOYGH @assert.unique; // unique voyage no.
+        VLEGN      : Int64@assert.unique; // NUMERIC(10)   Unique leg Number
+        COSTCODE   : String(4)@assert.unique; //Unique cost code --> NAVOTGC
         COSTU      : String(10);
         PRCUNIT    : String(3); //
         PROCOST    : Currency; // projection Cost

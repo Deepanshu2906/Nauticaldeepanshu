@@ -1,11 +1,21 @@
 ###
-GET http://localhost:4004/odata/v4/master-data-yoyage-service/VOYTYP/3
+GET http://localhost:4004/odata/v4/nautical/VOYTYP
 
 ###POST REQUEST
-POST http://localhost:4004/odata/v4/master-data-yoyage-service/VOYTYP
+POST http://localhost:4004/odata/v4/nautical/VOYTYP
+Content-Type: application/json
+
+{
+    "VOYCD":"1237",
+    "VOYDES":" CHARTER  jijuh333"
+}
+
+###PATCH VOYAGE
+
+PATCH http://localhost:4004/odata/v4/nautical/VOYTYP/"1235"
 Content-Type: application/json
 
 {
     "VOYCD":"1235",
-    "VOYDES":"SPECIAL CHARTER"
+    "VOYDES":"SPECIAL CHARTER  changed 2nd"
 }
