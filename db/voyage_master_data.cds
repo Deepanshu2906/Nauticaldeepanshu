@@ -9,7 +9,7 @@ namespace NAUTI_MAS;
 
 //voyage type table
 entity VOYTYP {
-    key VOYCD  : String(4) ; //Voyage code
+    key VOYCD  : String(4) @mandatory @assert.notNull; //Voyage code
     VOYDES : String(40); //Voyage Code Description
 };
 

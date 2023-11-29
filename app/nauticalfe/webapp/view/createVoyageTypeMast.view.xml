@@ -14,14 +14,14 @@ xmlns:form="sap.ui.layout.form"
     <Bar id="_IDGenBar1" >
       <contentLeft>
       
-      <Button id="_IDGenButton3" text="create" press="onCreate"></Button>
+      <Button id="_IDGenButton3" text="Create new" press="onCreate"></Button>
       <Button id="_IDGenButton4" text="Delete" press="onDeleteVoyageType"></Button>
-      <Button id="_IDGenButton5" text="edit"></Button>
+      
       <Button id="_IDGenButton6" text="update" press="onUpdate"></Button>
 
       </contentLeft>
     </Bar>
-      <Table id="createTypeTable" mode="MultiSelect" items="{/VOYTYP}"  updateFinished="onTableUpdateFinished" selectionChange="selectedItems">
+      <Table id="createTypeTable" mode="MultiSelect" items="{/VOYTYP}"  updateFinished="onTableUpdateFinished" selectionChange="selectedItems" >
 
         <columns>
           <Column id="_IDGenColumn1" >
@@ -35,7 +35,7 @@ xmlns:form="sap.ui.layout.form"
         <items>
           <ColumnListItem id="_IDGenColumnListItem1">
             <cells>
-              <Input id="_IDGenInput1" value="{VOYCD}" editable="false" />
+              <Input id="_IDGenInput1" value="{VOYCD}" editable="false"  />
               <Input id="_IDGenInput2" value="{VOYDES}" editable="false" />
               <Button id="_IDGenButton1" icon="sap-icon://delete" press="onDeleteRow" />
             </cells>

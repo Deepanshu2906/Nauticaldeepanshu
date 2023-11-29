@@ -6,8 +6,8 @@ POST http://localhost:4004/odata/v4/nautical/VOYTYP
 Content-Type: application/json
 
 {
-    "VOYCD":"1236",
-    "VOYDES":" CHARTER  jijuh333"
+    "VOYCD":"",
+    "VOYDES":null
 }
 
 ###PATCH VOYAGE
