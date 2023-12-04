@@ -166,6 +166,13 @@
           "target": [
             "TargetvesselType"
           ]
+        },
+        {
+          "name": "CurrencyTypeMaster",
+          "pattern": "CurrencyMasterTable",
+          "target": [
+            "TargetCurrencyMasterTable"
+          ]
         }
 
       ],
@@ -237,8 +244,15 @@
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "TargetvesselType1",
-          "viewName": "bidMasterType"
+          "viewId": "VesselTypeMaster1",
+          "viewName": "VesselTypeMaster"
+        },
+        "TargetCurrencyMasterTable": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "CurrencyMasterTable",
+          "viewName": "CurrencyMaster"
         }
       }
     },

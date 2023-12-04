@@ -14,14 +14,14 @@ sap.ui.define(
       var emptyrowAdded=0;
   
       let rowData = {};
-      return BaseController.extend("nauticalfe.controller.bidMasterType", {
+      return BaseController.extend("nauticalfe.controller.CurrencyMaster", {
         onInit: function () {
   
   
         },
         
         onTableUpdateFinished: function (oEvent) {
-          console.log((" Cargo table updated"));
+          console.log((" Currency table updated"));
           let oTable = oEvent.getSource();
           
           // Get the binding information
@@ -35,7 +35,6 @@ sap.ui.define(
           console.log("Number of Items Displayed:", iDisplayedItems);
           // this.ensureMinimumRows(iDisplayedItems);
           
-          // this.getView().getModel().refresh();
         },
         ensureMinimumRows: function (iDisplayedItems) {
           let oTable = this.byId("createTypeTable");
@@ -74,41 +73,8 @@ sap.ui.define(
           
           
         },
-        // onCreateDialog: function () {
-        //   var oView = this.getView();
-        //   var oDialog = oView.byId("createDialog");
-          
-        //   if (!oDialog) {
-        //     oDialog = new sap.m.Dialog("createDialog", {
-        //       title: "Create New Entry",
-        //       contentWidth: "400px",
-        //       content: new sap.m.VBox({
-        //         items: [
-        //           new sap.m.Label({ text: " Voyage Code " }),
-        //           new sap.m.Input({ value: "", id: "inputCode", required: true, maxLength:4 }), // Corrected ID
-        //           new sap.m.Label({ text: "Description" }),
-        //           new sap.m.Input({ value: "", id: "inputDescription", required: true }) // Corrected ID
-        //         ]
-        //       }),
-        //       beginButton: new sap.m.Button({
-        //         text: "Close",
-        //         press: function () {
-        //           oDialog.close();
-        //         },
-        //     }),
-        //     endButton: new sap.m.Button({
-        //       text: "Create",
-        //         press: function (){
-        //           oDialog.onCreateEntry()
-        //         }
-        //       })
-        //     });
-        //     oView.addDependent(oDialog);
-        //   }
-        //   oDialog.open();
-          
-        // },
-        onShowDialogForCreate: function(oEvent){
+        
+        onShowDialogForCreate: function( ){
           let oDialog = this.byId("helloDialog")
           // console.log("clicked",oDialog);
           if( oDialog){
@@ -170,8 +136,8 @@ sap.ui.define(
           }
         
           // Your logic to create the entry goes here
-          rowData.CARCD = sCode;
-          rowData.CARDES = sDescription
+          rowData.NAVOYCUR = sCode;
+          rowData.NAVOYGCURDES = sDescription.toUpperCase();
           this.onCreate(); // Close the dialog after successful creation
   
           // after hitting dialog box  closing the dialog box 
@@ -184,25 +150,19 @@ sap.ui.define(
         },
         onCreate: function () {
           
-          // this.selectedItems(oEvent);
           console.log(rowData);
-          // if (rowData.VOYCD == "" || rowData.VOYDES == '') {
-          //   MessageToast.show("Please fill the required fields");
-          //   // this.byId('createTable').removeSelections();
-  
-          //   return;
-          // }
+          
   
           let that = this.getView();
   
           let data = {
-            "CARCD": rowData.CARCD,
-            "CARDES": rowData.CARDES
+            "NAVOYCUR": rowData.NAVOYCUR,
+            "NAVOYGCURDES": rowData.NAVOYGCURDES
           }
           let JsonData = JSON.stringify(data)
           // console.log(JsonData);
   
-          let EndPoint = "/odata/v4/nautical/CARTYP";
+          let EndPoint = "/odata/v4/nautical/CURR";
           fetch(EndPoint, {
             method: 'POST',
             headers: {
@@ -221,8 +181,13 @@ sap.ui.define(
                   MessageToast.show("Entry Created Successfully.");
                   emptyrowAdded++;
                   that.getModel().refresh();
+                  if(aSelectedIds.length){
+
+                      this.getView().byId('createTypeTable').removeSelections();
+                    }
                   // location.reload();
                   // that.byId('createTable').removeSelections();
+                  
   
                 }else {
                   // Check if the response contains a message
@@ -259,18 +224,9 @@ sap.ui.define(
               let cells = oSelectedItem.getCells();
               // console.log(cells);
               
-              return [oSelectedItem.getBindingContext().getProperty("CARCD"), oSelectedItem.getBindingContext().getProperty("CARDES")]
+              return [oSelectedItem.getBindingContext().getProperty("NAVOYCUR"), oSelectedItem.getBindingContext().getProperty("NAVOYGCURDES")]
   
-            } else {
-  
-            //   let cells = oSelectedItem.getCells();
-            //   console.log(cells);
-            //   rowData.VOYCD = cells[0].getValue(); // Assuming the first cell holds VOYCD
-            //   rowData.VOYDES = cells[1].getValue();
-            //   console.log(rowData);
-            //   return rowData
-  
-            }
+            } 
   
           });
           console.log(aSelectedIds);
@@ -311,16 +267,18 @@ sap.ui.define(
         //  console.log("update press");
         //  var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
         // console.log('rowData ->', rowData);
-        rowData.CARDES = this.getView().byId("charterDesc2").getValue();
+
+        rowData.NAVOYGCURDES = this.getView().byId("charterDesc2").getValue().toUpperCase();
+
          var oVoyageUpdate = {
-             "CARCD": aSelectedIds[0][0], // Provide the Voyage Type code you want to update
-             "CARDES": rowData.CARDES // Update with the new Description 
+             "NAVOYCUR": aSelectedIds[0][0], // Provide the Voyage Type code you want to update
+             "NAVOYGCURDES": rowData.NAVOYGCURDES // Update with the new Description 
          }
         //  console.log(oVoyageUpdate);
      
          var JsonData = JSON.stringify(oVoyageUpdate);
      
-         let EndPoint = "/odata/v4/nautical/CARTYP/" + oVoyageUpdate.CARCD ; // Adjust the endpoint as needed
+         let EndPoint = "/odata/v4/nautical/CURR/" + oVoyageUpdate.NAVOYCUR ; // Adjust the endpoint as needed
          
         //  console.log(EndPoint);
   
@@ -338,6 +296,8 @@ sap.ui.define(
                
                this.getView().getModel().refresh();
                this.handleCloseUpdate();
+               this.getView().byId('createTypeTable').removeSelections();
+               aSelectedIds =[];
              } else {
                // Check if the response contains a message
                res.json().then((data) => {
@@ -361,7 +321,7 @@ sap.ui.define(
   
           if (!aItems.length) {
   
-            MessageToast.show("nothing selected");
+            MessageToast.show("Please Select items ");
   
             return;
           }

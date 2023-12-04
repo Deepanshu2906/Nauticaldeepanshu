@@ -73,7 +73,8 @@ sap.ui.define([
                         }.bind(this),
                     }),
                     beginButton: new sap.m.Button({
-                        text: "Close",
+                        text: "Cancel",
+                        type:"Reject",
                         press: function () {
                             oDialog.close();
                         },
@@ -128,7 +129,8 @@ sap.ui.define([
                         }.bind(this),
                     }),
                     beginButton: new sap.m.Button({
-                        text: "Close",
+                        text: "Cancel",
+                        type:"Reject",
                         press: function () {
                             oDialog.close();
                         },
@@ -146,6 +148,62 @@ sap.ui.define([
                         cells: [
                             new sap.m.Text({ text: "{CARCD}" }),
                             new sap.m.Text({ text: "{CARDES}" }),
+                        ],
+                    }),
+                });
+                // Bind the dialog to the view
+                this.getView().addDependent(oDialog);
+
+                // Open the dialog
+                oDialog.open();
+            },
+            showValueHelpDialog4: function () {
+                // Create a dialog
+                console.log("clicked Currency");
+                var oDialog = new sap.m.Dialog({
+                    title: "Select: Currency Types",
+                    contentWidth: "60%",
+                    contentHeight: "60%",
+                    content: new sap.m.Table({
+                        mode: sap.m.ListMode.SingleSelectMaster,
+
+                        columns: [
+                            new sap.m.Column({
+                                header: new sap.m.Text({ text: "Currency Type" }),
+                            }),
+                            new sap.m.Column({
+                                header: new sap.m.Text({ text: "Description" }),
+                            }),
+                        ],
+                        
+                        selectionChange: function (oEvent) {
+                            var oSelectedItem = oEvent.getParameter("listItem");
+                            var oSelectedValue = oSelectedItem.getCells()[0].getText();
+                            var inputVoyageType = this.getView().byId("_IDGenInput5"); // Input field for Voyage Type
+                            this.populateInputField(inputVoyageType, oSelectedValue);
+                            oDialog.close();
+                        }.bind(this),
+                    }),
+                    beginButton: new sap.m.Button({
+                        text: "Cancel",
+                        type:"Reject",
+                        press: function () {
+                            oDialog.close();
+                        },
+                    }),
+
+                });
+                // var oModel = this.getView().getModel(); // Replace with your OData model reference
+                var oValueHelpTable = oDialog.getContent()[0]; // Assuming the table is the first content element
+
+                // oValueHelpTable.setModel(oModel);
+
+                oValueHelpTable.bindItems({
+                    path: "/CURR", // Replace with your entity set
+                    template: new sap.m.ColumnListItem({
+                        cells: [
+                            new sap.m.Text({ text: "{NAVOYCUR}" }),
+                            new sap.m.Text({ text: "{NAVOYGCURDES}" }),
                         ],
                     }),
                 });

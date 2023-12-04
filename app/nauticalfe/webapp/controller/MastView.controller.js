@@ -17,6 +17,11 @@ sap.ui.define(
           const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("vesselType")
 
+        },
+        navToCurrencyType: function(){
+          const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("CurrencyTypeMaster")
+
         }
       });
     }

@@ -25,7 +25,7 @@ entity CURR {
 
     key NAVOYCUR     : String(4)  @mandatory @assert.notNull; //Currency Type
 
-    NAVOYGCURDES : String(40) //Currency Description
+    NAVOYGCURDES : String(40); //Currency Description
 
 
 };

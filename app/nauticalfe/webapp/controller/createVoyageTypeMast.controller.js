@@ -188,13 +188,7 @@ sap.ui.define(
         
         // this.selectedItems(oEvent);
         console.log(rowData);
-        // if (rowData.VOYCD == "" || rowData.VOYDES == '') {
-        //   MessageToast.show("Please fill the required fields");
-        //   // this.byId('createTable').removeSelections();
-
-        //   return;
-        // }
-
+        
         let that = this.getView();
 
         let data = {
@@ -223,6 +217,10 @@ sap.ui.define(
                 MessageToast.show("Entry Created Successfully.");
                 emptyrowAdded++;
                 that.getModel().refresh();
+                if(aSelectedIds.length){
+
+                  this.getView().byId('createTypeTable').removeSelections();
+                }
                 // location.reload();
                 // that.byId('createTable').removeSelections();
 
@@ -301,18 +299,7 @@ sap.ui.define(
       //  Function  for  updating  an row
       onUpdate: function () {
         let oTable = this.getView().byId('createTypeTable');
-      //   if( aSelectedIds.length == 0) {
-      //    MessageToast.show("Please select  a  row");
-      //    return
-      //   }
-      //   if( aSelectedIds.length >1) {
-      //       MessageToast.show("Please select  one  row only ");
-      //     return
-      //    }
-        
-      //  console.log("update press");
-      //  var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-      // console.log('rowData ->', rowData);
+      
       rowData.VOYDES = this.getView().byId("charterDesc2").getValue();
        var oVoyageUpdate = {
            "VOYCD": aSelectedIds[0][0], // Provide the Voyage Type code you want to update
@@ -338,9 +325,10 @@ sap.ui.define(
                console.log("Item updated Successfully");
                MessageToast.show(" Item updated Successfully");
              
-             this.getView().getModel().refresh();
-             this.handleCloseUpdate();
-                this.getView().byId('createTypeTable').removeSelections();
+               this.getView().getModel().refresh();
+               this.handleCloseUpdate();
+               this.getView().byId('createTypeTable').removeSelections();
+               aSelectedIds =[];
 
            } else {
              // Check if the response contains a message
@@ -365,35 +353,40 @@ sap.ui.define(
 
         if (!aItems.length) {
 
-          MessageToast.show("Please Select a Item ");
+          MessageToast.show("Please Select  Items ");
 
           return;
         }
 
-        aItems.forEach(function (oItem) {
-          // console.log(oItem);
-
-          oItem.getBindingContext().delete().then (res=>{
-
-             res.json().then((data)=>{
-                 console.log(data);
-             })
-
-          }).
-          
-          catch(function (oError) {
-
-            if (!oError.canceled) {
-
-              // error was already reported to message model
-
+        const that = this;  // creatinh reference for use in Dialog
+        sap.ui.require(["sap/m/MessageBox"], function (MessageBox) {
+          MessageBox.confirm(
+            "Are you sure you want to delete the selected items?", {
+              title: "Confirm Deletion",
+              onClose: function (oAction) {
+                if (oAction === MessageBox.Action.OK) {
+                  // User confirmed deletion
+                  that.deleteSelectedItems(aItems);
+                } else {
+                  // User canceled deletion
+                  sap.m.MessageToast.show("Deletion canceled");
+                }
+              }
             }
-
-          });
-
+          );
         });
 
+      }, // ending fn
+      deleteSelectedItems: function (aItems) {
+        aItems.forEach(function (oItem) {
+          oItem.getBindingContext().delete().catch(function (oError) {
+            if (!oError.canceled) {
+              // Error was already reported to message model
+            }
+          });
+        });
       }
+
     });
 
   });

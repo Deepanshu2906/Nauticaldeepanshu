@@ -30,16 +30,16 @@ xmlns:form="sap.ui.layout.form"
             
             
                 <!-- Add your form elements here -->
-                <Label id="_IDGenLabel1" text="voyage Name"/>
+                <Label id="_IDGenLabel1" text="Voyage Name" showColon="false"/>
                 <Input id="_IDGenInput1" value="" />
-                <Label id="_IDGenLabel2" text="Voyage Type"/>
+                <Label id="_IDGenLabel2" text="Voyage Type" showColon="false"/>
                 <Input id="_IDGenInput2" value="" showValueHelp="true" valueHelpRequest=".showValueHelpDialog1" />
-                <Label id="_IDGenLabel3" text="bidding Type"/>
+                <Label id="_IDGenLabel3" text="Bidding Type" showColon="false"/>
                 <Input id="_IDGenInput3" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
-                <Label id="_IDGenLabel4" text="Cargo Type"/>
+                <Label id="_IDGenLabel4" text="Cargo Type" showColon="false"/>
                 <Input id="_IDGenInput4" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
-                <Label id="_IDGenLabel5" text="currency"/>
-                <Input id="_IDGenInput5" value="" showValueHelp="true"/>
+                <Label id="_IDGenLabel5" text="Currency" showColon="false"/>
+                <Input id="_IDGenInput5" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4"/>
                 <!-- Add more form elements as needed -->
             </form:SimpleForm>
             

@@ -13,18 +13,23 @@
     
   }
   /* for border*/
-  #application-nauticalfe-display-component---View2--mainSplitter-content-1{
-    border: 2px solid grey;
+  
+#container-nauticalfe---View2--mainSplitter-content-1{
+    border: 2px solid rgb(221, 214, 214);
     height: 400px;
+    background-color: white;
 }
-#application-nauticalfe-display-component---View2--mainSplitter-content-2{
-    border: 2px solid grey;
+#container-nauticalfe---View2--mainSplitter-content-2{
+    border: 2px solid rgb(221, 214, 214);
     height: 400px;
+    background-color: white;
 }
-#application-nauticalfe-display-component---View2--mainSplitter-content-0{
-    border: 2px solid grey;
-    height: 400px;
+#container-nauticalfe---View2--mainSplitter-content-0{
+    border: 2px solid rgb(221, 214, 214);
+    height: 402px;
+    background-color: white;
 }
+ 
 /*for button color*/
 .sapMBtnInner.sapMBtnText {
     color: red;
