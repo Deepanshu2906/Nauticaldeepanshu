@@ -159,6 +159,13 @@
           "target": [
             "TargetvoyageType"
           ]
+        },
+        {
+          "name": "vesselType",
+          "pattern": "vesselType",
+          "target": [
+            "TargetvesselType"
+          ]
         }
 
       ],
@@ -225,6 +232,13 @@
           "clearControlAggregation": false,
           "viewId": "TargetvoyageType1",
           "viewName": "createVoyageTypeMast"
+        },
+        "TargetvesselType": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "TargetvesselType1",
+          "viewName": "bidMasterType"
         }
       }
     },

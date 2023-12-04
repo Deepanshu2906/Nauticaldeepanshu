@@ -8,9 +8,14 @@ sap.ui.define(
       return BaseController.extend("nauticalfe.controller.MastView", {
         onInit() {
         },
-        press1: function(){
+        navToCharterType: function(){
           const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("voyageType")
+
+        },
+        navToVesselType: function(){
+          const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("vesselType")
 
         }
       });

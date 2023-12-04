@@ -23,7 +23,7 @@ xmlns:form="sap.ui.layout.form"
         <VBox id="_IDGenVBox1">
         
             <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="300px" resizable="false" />
+                <l:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="200px" resizable="true" />
             </layoutData>
             <!-- Add a Form inside _IDGenSplitterLayoutData1 -->
             <form:SimpleForm id="_IDGenSimpleForm1" title="Create Voyage">
@@ -35,25 +35,25 @@ xmlns:form="sap.ui.layout.form"
                 <Label id="_IDGenLabel2" text="Voyage Type"/>
                 <Input id="_IDGenInput2" value="" showValueHelp="true" valueHelpRequest=".showValueHelpDialog1" />
                 <Label id="_IDGenLabel3" text="bidding Type"/>
-                <Input id="_IDGenInput3" value="" showValueHelp="true"/>
+                <Input id="_IDGenInput3" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
                 <Label id="_IDGenLabel4" text="Cargo Type"/>
-                <Input id="_IDGenInput4" value="" showValueHelp="true"/>
+                <Input id="_IDGenInput4" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
                 <Label id="_IDGenLabel5" text="currency"/>
                 <Input id="_IDGenInput5" value="" showValueHelp="true"/>
                 <!-- Add more form elements as needed -->
             </form:SimpleForm>
             
         </VBox>
-        <VBox id="_IDGenVBox2" >
+        <VBox id="_IDGenVBox2" class="" >
             <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="800px" />
+                <l:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="800px" resizable="false"/>
             </layoutData>
             
         </VBox>
 
         <VBox id="_IDGenVBox3"  >
             <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData3" size="30%" minSize="300px" resizable="false" />
+                <l:SplitterLayoutData id="_IDGenSplitterLayoutData3" size="" minSize="400px" resizable="false" />
             </layoutData>
         </VBox>
     </l:Splitter>
@@ -84,7 +84,7 @@ xmlns:form="sap.ui.layout.form"
         
         
       </HBox>
-        <Table id="table"  items="{Vdata>/voyageData}" growing="true" growingThreshold="10"  >
+        <Table id="table"  items="{Vdata>/voyageData}" growing="true" growingThreshold="10" noDataText="hello"  >
           <columns>
            <Column id="heading1" >
              <Text id="text1" text="Port Name"/>

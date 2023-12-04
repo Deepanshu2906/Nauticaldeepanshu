@@ -12,9 +12,9 @@
             
             <ObjectListItem id="_IDGenObjectListItem1"  intro="Selection Options" ></ObjectListItem>
  
-         <Button id="_IDGenButton2"  text="Voyage Type"  width="20%" class="one" press="press1"></Button>
+         <Button id="_IDGenButton2"  text="Voyage Type"  width="20%" class="one" press="navToCharterType"></Button>
          <Button id="_IDGenButton3"  icon="sap-icon://arrow-right" class="two"></Button>      
-     <Button id="_IDGenButton4"   text="Vessel Type" width="20%" class="three"></Button>
+     <Button id="_IDGenButton4"   text="Vessel Type" width="20%" class="three" press="navToVesselType"></Button>
               <Button id="_IDGenButton5"  icon="sap-icon://arrow-right" class="four"></Button>      
      <Button id="_IDGenButton6"   text="Currency" width="20%" class="five"></Button>
      <Button id="_IDGenButton7"  text="Class Master" width="20%" class="one"></Button>

@@ -16,14 +16,14 @@ entity VOYTYP {
 //Cargo Type Master table
 entity CARTYP {
 
-    CARCD  : String(4)   @assert.unique; //Vessel Type
+     key CARCD  : String(4)  @mandatory @assert.notNull  ; //Vessel Type
     CARDES : String(40); //Cargo type description
 };
 
 //Currency Master Data type table
 entity CURR {
 
-    NAVOYCUR     : String(4); //Currency Type
+    key NAVOYCUR     : String(4)  @mandatory @assert.notNull; //Currency Type
 
     NAVOYGCURDES : String(40) //Currency Description
 
@@ -33,7 +33,7 @@ entity CURR {
 //Bid Master Data table
 entity MAS_BID {
 
-    BNAME        : String(12)    @assert.unique; //This field represents a unique username.
+    key BNAME        : String(12)    @mandatory @assert.notNull @assert.unique; //This field represents a unique username.
 
     CODE         : String(10); //This field represents a unique Code
 

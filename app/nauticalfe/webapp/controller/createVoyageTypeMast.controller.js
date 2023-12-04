@@ -33,21 +33,21 @@ sap.ui.define(
         let iDisplayedItems = oTable.getItems().length;
         
         // Log or display the information
-        console.log("Binding Path:", oBindingInfo.path);
+        // console.log("Binding Path:", oBindingInfo.path);
         console.log("Number of Items Displayed:", iDisplayedItems);
-        this.ensureMinimumRows(iDisplayedItems);
+        // this.ensureMinimumRows(iDisplayedItems);
         
         // this.getView().getModel().refresh();
       },
       ensureMinimumRows: function (iDisplayedItems) {
         let oTable = this.byId("createTypeTable");
-        let numRowsToAdd = (8+emptyrowAdded) - iDisplayedItems;
+        let numRowsToAdd = (9) - iDisplayedItems;
         console.log(numRowsToAdd);
         if (numRowsToAdd > 0) {
           for (let i = 0; i < numRowsToAdd; i++) {
             let oRow = new sap.m.ColumnListItem(); // Create an empty row
             // Add cells for each column in the table
-            oRow.addCell(new sap.m.Input());
+            oRow.addCell(new sap.m.Input({ maxLength: 4 }));
             oRow.addCell(new sap.m.Input()); // Add cells for each field/column you want to display
             // Add more cells if needed for other fields
             oTable.addItem(oRow); // Add the empty row to the table
@@ -58,7 +58,6 @@ sap.ui.define(
       onAddRow: function () {
         let oTable = this.byId("createTypeTable");
         emptyrowAdded++;
-        
         
         // Get the number of items displayed in the table
         let iDisplayedItems = oTable.getItems().length;
@@ -88,7 +87,7 @@ sap.ui.define(
       //       content: new sap.m.VBox({
       //         items: [
       //           new sap.m.Label({ text: " Voyage Code " }),
-      //           new sap.m.Input({ value: "", id: "inputCode", required: true }), // Corrected ID
+      //           new sap.m.Input({ value: "", id: "inputCode", required: true, maxLength:4 }), // Corrected ID
       //           new sap.m.Label({ text: "Description" }),
       //           new sap.m.Input({ value: "", id: "inputDescription", required: true }) // Corrected ID
       //         ]
@@ -111,38 +110,82 @@ sap.ui.define(
       //   oDialog.open();
         
       // },
-      // onCreateForm: function(){
-      //   let oDialog = this.byId("createDialog")
-      //   console.log("clicked",oDialog);
-      //   oDialog.open();
-      //   if( oDialog){
-      //   }
+      onShowDialogForCreate: function(oEvent){
+        let oDialog = this.byId("helloDialog")
+        // console.log("clicked",oDialog);
+        if( oDialog){
+          
+          oDialog.open();
+        }
 
-      // },
+      },
+      openDialogForUpdate : function(){
+        let oDialog = this.byId("helloDialog2")
+        // console.log("clicked",oDialog);
+        let code1 = this.getView().byId("charterCode2");
+        let desc1 = this.getView().byId("charterDesc2");
+        console.log(aSelectedIds[0], rowData.VOYDES );
+        code1.setValue(aSelectedIds[0][0]);
+        desc1.setValue(aSelectedIds[0][1]);
+        if( oDialog){
+          
+          oDialog.open();
+        }
+
+
+      },
+      handleCloseCreate: function (){
+        let oDialog = this.byId("helloDialog")
+        // console.log("clicked",oDialog);
+        if( oDialog){
+          
+          oDialog.close();
+        }
+      },
+      handleCloseUpdate : function(){
+        let oDialog = this.byId("helloDialog2")
+        // console.log("clicked",oDialog);
+        if( oDialog){
+          
+          oDialog.close();
+        }
+
+      },
       
-      // onCreateEntry: function () {
-      //   var oView = this.getView();
-      //   var oCodeInput = oView.byId("inputCode");
-      //   var oDescInput = oView.byId("inputDescription");
+      onCreateEntry: function () {
+        var oView = this.getView();
+        var oCodeInput = oView.byId("charterCode");
+        var oDescInput = oView.byId("charterDesc");
+        
+        if (!oCodeInput || !oDescInput) {
+          sap.m.MessageToast.show("Inputs not found or initialized properly.");
+          return;
+        }
+        
+        var sCode = oCodeInput.getValue();
+        var sDescription = oDescInput.getValue();
+        console.log(sCode, sDescription);
       
-      //   if (!oCodeInput || !oDescInput) {
-      //     sap.m.MessageToast.show("Inputs not found or initialized properly.");
-      //     return;
-      //   }
+        if (!sCode.trim() || !sDescription.trim()) {
+          sap.m.MessageToast.show("Please fill in all required fields.");
+          return;
+        }
       
-      //   var sCode = oCodeInput.getValue();
-      //   var sDescription = oDescInput.getValue();
-      
-      //   if (!sCode.trim() || !sDescription.trim()) {
-      //     sap.m.MessageToast.show("Please fill in all required fields.");
-      //     return;
-      //   }
-      
-      //   // Your logic to create the entry goes here
-      
-      //   this.onCancel(); // Close the dialog after successful creation
-      // },
+        // Your logic to create the entry goes here
+        rowData.VOYCD = sCode;
+        rowData.VOYDES = sDescription
+        this.onCreate(); // Close the dialog after successful creation
+
+        // after hitting dialog box  closing the dialog box 
+        let oDialog = this.byId("helloDialog")
+        // console.log("clicked",oDialog);
+        if( oDialog){
+          oDialog.close();
+        }
+
+      },
       onCreate: function () {
+        
         // this.selectedItems(oEvent);
         console.log(rowData);
         // if (rowData.VOYCD == "" || rowData.VOYDES == '') {
@@ -171,13 +214,13 @@ sap.ui.define(
         })
           .then((res,error) => {
             if (res) {
-              console.log(res);
-              console.log(res.status, res.ok, res.message);
+              // console.log(res);
+              // console.log(res.status, res.ok, res.message);
               
               if (res.status == "201") {
 
                 console.log("Entity created successfully");
-                MessageToast.show("Created succesfully");
+                MessageToast.show("Entry Created Successfully.");
                 emptyrowAdded++;
                 that.getModel().refresh();
                 // location.reload();
@@ -202,30 +245,23 @@ sap.ui.define(
             console.log("error", err);
           })
       },
+      
       selectedItems: function (oEvent) {
         // console.log("hello");
         let oTable = oEvent.getSource();
         let aSelectedItems = oTable.getSelectedItems();
+        
 
         aSelectedIds = aSelectedItems.map(function (oSelectedItem) {
 
-          // console.log(oSelectedItem);
           // console.log(oSelectedItem.getBindingContext());
 
           if (oSelectedItem.getBindingContext()) {
 
             let cells = oSelectedItem.getCells();
-            if (cells.length > 1 && cells[1].isA("sap.m.Input")) {
-              let inputField = cells[1]; // Get the input field in the second cell
-
-              // Toggle the 'editable' property based on selection state
-              if (oSelectedItem.getSelected()) {
-                  inputField.setEditable(true); // Set editable to true if selected
-              } else {
-                  inputField.setEditable(false); // Set editable to false if deselected
-              } 
-          }
-            return oSelectedItem.getBindingContext().getProperty("VOYCD")
+            // console.log(cells);
+            
+            return [oSelectedItem.getBindingContext().getProperty("VOYCD"), oSelectedItem.getBindingContext().getProperty("VOYDES")]
 
           } else {
 
@@ -244,32 +280,51 @@ sap.ui.define(
         return aSelectedIds;
 
       },
+      // function for pop up dialog box for update
+      onShowUpdateDialog: function(){
+        
+        let oTable = this.getView().byId('createTypeTable');
+        if( aSelectedIds.length == 0) {
+          MessageToast.show("Please select  a  row");
+          return
+        }
+        if( aSelectedIds.length > 1) {
+          MessageToast.show("Please select  one  row only ");
+          return
+        }
+        this.getView().byId('charterDesc2').setValue(aSelectedIds[0][1]);
+         this.openDialogForUpdate();
+        
+
+      },
 
       //  Function  for  updating  an row
       onUpdate: function () {
-        let oView = this.getView();
-        if( aSelectedIds.length == 0) {
-         MessageToast.show("Please select  a  row");
-         return
-        }
-        if( aSelectedIds.length >1) {
-            MessageToast.show("Please select  one  row only ");
-          return
-         }
+        let oTable = this.getView().byId('createTypeTable');
+      //   if( aSelectedIds.length == 0) {
+      //    MessageToast.show("Please select  a  row");
+      //    return
+      //   }
+      //   if( aSelectedIds.length >1) {
+      //       MessageToast.show("Please select  one  row only ");
+      //     return
+      //    }
         
-       console.log("update press");
-       var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
-        
+      //  console.log("update press");
+      //  var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+      // console.log('rowData ->', rowData);
+      rowData.VOYDES = this.getView().byId("charterDesc2").getValue();
        var oVoyageUpdate = {
-           "VOYCD": aSelectedIds[0], // Provide the Voyage Type code you want to update
+           "VOYCD": aSelectedIds[0][0], // Provide the Voyage Type code you want to update
            "VOYDES": rowData.VOYDES // Update with the new Description 
        }
+      //  console.log(oVoyageUpdate);
    
        var JsonData = JSON.stringify(oVoyageUpdate);
    
        let EndPoint = "/odata/v4/nautical/VOYTYP/" + oVoyageUpdate.VOYCD ; // Adjust the endpoint as needed
-       // let EndPoint = "/odata/v4/travel/insertTravel"; // Adjust the endpoint as needed
-       console.log(EndPoint);
+       
+      //  console.log(EndPoint);
 
        fetch(EndPoint, {
            method: 'PATCH', // Use PUT for updating existing resource
@@ -278,12 +333,15 @@ sap.ui.define(
            },
            body: JsonData
        })
-       .then(function (res) {
+       .then( (res) =>{
            if (res.ok) {
-               console.log("Voyage entity Description updated Successfully");
-               MessageToast.show("Voyage entity Description updated Successfully");
+               console.log("Item updated Successfully");
+               MessageToast.show(" Item updated Successfully");
              
-             oView.getModel().refresh();
+             this.getView().getModel().refresh();
+             this.handleCloseUpdate();
+                this.getView().byId('createTypeTable').removeSelections();
+
            } else {
              // Check if the response contains a message
              res.json().then((data) => {
@@ -307,15 +365,23 @@ sap.ui.define(
 
         if (!aItems.length) {
 
-          MessageToast.show("nothing selected");
+          MessageToast.show("Please Select a Item ");
 
           return;
         }
 
         aItems.forEach(function (oItem) {
-          console.log(oItem);
+          // console.log(oItem);
 
-          oItem.getBindingContext().delete().catch(function (oError) {
+          oItem.getBindingContext().delete().then (res=>{
+
+             res.json().then((data)=>{
+                 console.log(data);
+             })
+
+          }).
+          
+          catch(function (oError) {
 
             if (!oError.canceled) {
 
@@ -329,8 +395,6 @@ sap.ui.define(
 
       }
     });
-
-
 
   });
 

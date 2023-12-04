@@ -107,6 +107,7 @@
     background-color:rgb(25, 134, 134);
     height: 40px;
 }
+
 #application-nauticalfe-display-component---View3--header5{
     background-color:rgb(25, 134, 134);
     height: 45px;
@@ -277,4 +278,13 @@
     
     align-items: center;
     justify-content: space-between;
+}
+
+/* create charter type  View css  */
+.dialogContent_Vbox  {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 10px;
 }
