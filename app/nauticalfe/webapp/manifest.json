@@ -78,6 +78,14 @@
           "autoExpandSelect": true,
           "earlyRequests": true
         }
+      },
+      "bidData":{
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "Bid.json"
+      },
+      "Vdata":{
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "VoyageSample.json"
       }
     },
     "resources": {

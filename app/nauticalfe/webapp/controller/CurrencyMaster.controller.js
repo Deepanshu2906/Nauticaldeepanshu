@@ -180,7 +180,8 @@ sap.ui.define(
                   console.log("Entity created successfully");
                   MessageToast.show("Entry Created Successfully.");
                   emptyrowAdded++;
-                  that.getModel().refresh();
+                  that.byId("createTypeTable").getModel().refresh();
+                  
                   if(aSelectedIds.length){
 
                       this.getView().byId('createTypeTable').removeSelections();

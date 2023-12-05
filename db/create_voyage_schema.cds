@@ -12,7 +12,7 @@ namespace create_voyage;
 
 
 
-// Voyage header date  Table
+// Voyage header data  Table
 entity NAVOYGH {
 
         VOYNO      : Association to NAVOYGIP @assert.unique; // Voyage Number

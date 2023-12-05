@@ -16,45 +16,49 @@ xmlns:form="sap.ui.layout.form"
   <!--this is first page-->
         <l:Splitter
         id="mainSplitter"
-        height="500px"
+        height="480px"
         width="100%">
         
        
-        <VBox id="_IDGenVBox1">
+        <VBox id="_IDGenVBox1" class="map_box">
         
             <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="200px" resizable="true" />
+                <l:SplitterLayoutData id="_IDGenSplitterLayoutData1" minSize="220px" resizable="true" />
             </layoutData>
             <!-- Add a Form inside _IDGenSplitterLayoutData1 -->
             <form:SimpleForm id="_IDGenSimpleForm1" title="Create Voyage">
             
             
                 <!-- Add your form elements here -->
-                <Label id="_IDGenLabel1" text="Voyage Name" showColon="false"/>
+                <Label id="_IDGenLabel1" text="Voyage Name" showColon="false" design="Bold"/>
                 <Input id="_IDGenInput1" value="" />
-                <Label id="_IDGenLabel2" text="Voyage Type" showColon="false"/>
+                <Label id="_IDGenLabel2" text="Voyage Type" showColon="false" design="Bold"/>
                 <Input id="_IDGenInput2" value="" showValueHelp="true" valueHelpRequest=".showValueHelpDialog1" />
-                <Label id="_IDGenLabel3" text="Bidding Type" showColon="false"/>
+                <Label id="_IDGenLabel3" text="Bidding Type" showColon="false" design="Bold"/>
                 <Input id="_IDGenInput3" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
-                <Label id="_IDGenLabel4" text="Cargo Type" showColon="false"/>
+                <Label id="_IDGenLabel4" text="Cargo Type" showColon="false" design="Bold"/>
                 <Input id="_IDGenInput4" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
-                <Label id="_IDGenLabel5" text="Currency" showColon="false"/>
+                <Label id="_IDGenLabel5" text="Currency" showColon="false" design="Bold"/>
                 <Input id="_IDGenInput5" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4"/>
                 <!-- Add more form elements as needed -->
             </form:SimpleForm>
             
         </VBox>
-        <VBox id="_IDGenVBox2" class="" >
+        <VBox id="_IDGenVBox2" class="map1_box" >
             <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="800px" resizable="false"/>
+                <l:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="60%" resizable="false"/>
             </layoutData>
+
+            <Text text="heloo Marine Map"></Text>
             
         </VBox>
 
-        <VBox id="_IDGenVBox3"  >
+        <VBox id="_IDGenVBox3" class="map2_box"  >
             <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData3" size="" minSize="400px" resizable="false" />
+                <l:SplitterLayoutData id="_IDGenSplitterLayoutData3" size="30%"  resizable="false" />
             </layoutData>
+            <Text text="heloo Marine Traffic kaise"></Text>
+
         </VBox>
     </l:Splitter>
     
@@ -68,7 +72,7 @@ xmlns:form="sap.ui.layout.form"
         
         <FlexBox id="_IDGenFlexBox2" class="layout1">
         <Label id="_IDGenLabel6" text="Speed" class="sapUiMarginSmall"/>
-        <Input id="_IDGenInput6"  />
+        <Input id="_IDGenInput6"  change="onLiveChageSpeed" type="Number" maxLength="3"/>
         <Label id="_IDGenLabel8" text="NM/HRS" />
         </FlexBox>
         <FlexBox id="_IDGenFlexBox4" class="layout1" >
@@ -84,7 +88,7 @@ xmlns:form="sap.ui.layout.form"
         
         
       </HBox>
-        <Table id="table"  items="{Vdata>/voyageData}" growing="true" growingThreshold="10" noDataText="hello"  >
+        <Table id="table"  items="{Vdata>/voyageData}" growing="true" growingThreshold="10" noDataText="" showNoData="false" >
           <columns>
            <Column id="heading1" >
              <Text id="text1" text="Port Name"/>
@@ -127,18 +131,18 @@ xmlns:form="sap.ui.layout.form"
          <items>
            <ColumnListItem id="coloumnlist" type="Navigation" press="onNext" >
              <cells>
-              <Input id="field1" value ="{Vdata>Port Name}"/>
+              <Input id="field1" value ="{Vdata>Port Name}" editable="false"/>
               <Input id="field8" value ="{Vdata>Distance}"/>
               <Input id="field2" value ="{Vdata>Weather}"/>
               <Input id="field3" value ="{Vdata>Cargo Size}"/>
               <Input id="field4" value ="{Vdata>Unit}"/>
-              <Input id="field5" value ="{Vdata>Speed}"/>
-               <Input id="field6" value ="{Vdata>Sea Days}"/>
+              <Input id="field5" value ="{Vdata>Speed}" editable="false"/>
+               <Input id="field6" value ="{Vdata>Sea Days}" editable="false"/>
               <Input id="field7" value ="{Vdata>Port Days}"/>
               
-              <DatePicker id="DP4"	placeholder="Enter Date"	change="handleChange"	class="sapUiSmallMarginBottom" width="auto" />
-                <TimePicker id="TP1" change="handleChange"  displayFormat="HH:mm:ss"></TimePicker>
-              <DatePicker id="DP3"	placeholder="Enter Date"	change="handleChange"	class="sapUiSmallMarginBottom"/>
+              <DatePicker id="DP4"	placeholder="Enter Date"	editable="false" change="handleChange"	class="" width="auto" />
+                <TimePicker id="TP1" change="handleChange"  editable="false" displayFormat="HH:mm:ss"></TimePicker>
+              <DatePicker id="DP3"	placeholder="Enter Date"	change="handleChange"	class=""/>
               <TimePicker id="TP2" change="handleChange"  displayFormat="HH:mm:ss"></TimePicker>
               
              </cells>

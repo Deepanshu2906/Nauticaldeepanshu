@@ -1,0 +1,123 @@
+{
+    "biddingData": [
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "open"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Closed"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Ongoing"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Closed"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Closed"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Closed"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "open"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Closed"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Closed"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "open"
+        },
+        {
+            "Chartering Req No.": "4000000049",
+            "Bid Start Date": "2023-11-01",
+            "Bid Start Time": "15:06:45",
+            "Bid End Date": "2023-11-01",
+            "Bid End Time": "15:20:51",
+            "Status": "Closed"
+        }
+
+
+
+           ],
+    "bVendorData": [
+        {
+            "Vendors": "The Shipping Corporation Of India",
+            "Technical Score": "T1",
+            "Commercial score": "L1",
+            "Orignal Bid": "INR 800,000.00",
+            "Current Bid": "INR 730,000.00"
+            
+        },
+        {
+            "Vendors": "VR Marinetime Service Pvt Ltd",
+            "Technical Score": "T2",
+            "Commercial score": "L1",
+            "Orignal Bid": "INR 800,000.00",
+            "Current Bid": "INR 740,000.00"
+            
+        },
+        {
+            "Vendors": "Great Eastern Shipping Company",
+            "Technical Score": "T1",
+            "Commercial score": "L2",
+            "Orignal Bid": "INR 800,000.00",
+            "Current Bid": "INR 720,000.00"
+            
+        }
+        
+
+    ]
+}

@@ -1,0 +1,116 @@
+{
+    "voyageData": [
+            {
+                "Port Name":"Mumbai",
+                "Distance":"0",
+                "Weather":"0%",
+                "Cargo Size":"0.00",
+                "Unit":"",
+                "Speed":"",
+                "Sea Days":"",
+                "Port Days":"",
+                "Arrival Date":"",
+                "Arrival Time":"",
+                "Departure Date":"",
+                "Departure Time":""
+            },
+            {
+                "Port Name":"Paradeep",
+                "Distance":"1200",
+                "Weather":"0%",
+                "Cargo Size":"0.00",
+                "Unit":"",
+                "Speed":"",
+                "Sea Days":"",
+                "Port Days":"",
+                "Arrival Date":"",
+                "Arrival Time":"",
+                "Departure Date":"",
+                "Departure Time":""
+            }],
+"freightData1": [
+    {
+        "Port Name": "Mumbai",
+        "Distance(NM)": "1625.00",
+        "Cargo Size": "0.000",
+        "Freight Cost": "0.000",
+        "Other Cost": "10",
+        "Total Projected Cost per Port": ""
+    },
+    {
+        "Port Name": "Mumbai",
+        "Distance(NM)": "1625.00",
+        "Cargo Size": "0.000",
+        "Freight Cost": "0.000",
+        "Other Cost": "10",
+        "Total Projected Cost per Port": ""
+    },
+    {
+        "Port Name": "",
+        "Distance(NM)": "",
+        "Cargo Size": "",
+        "Freight Cost": "",
+        "Other Cost": "",
+        "Total Projected Cost per Port": ""
+    }
+   
+   
+   
+   
+],
+"freightData2": [
+    {
+        "Port Name": "Mumbai",
+        "Distance(NM)": "1625.00",
+        "Cargo Size": "0.000",
+        "Freight Cost": "0.000",
+        "Other Cost": "10",
+        "Total Projected Cost per Port": ""
+    },
+    {
+        "Port Name": "Mumbai",
+        "Distance(NM)": "1625.00",
+        "Cargo Size": "0.000",
+        "Freight Cost": "0.000",
+        "Other Cost": "10",
+        "Total Projected Cost per Port": ""
+    },
+    {
+        "Port Name": "",
+        "Distance(NM)": "",
+        "Cargo Size": "",
+        "Freight Cost": "",
+        "Other Cost": "",
+        "Total Projected Cost per Port": ""
+    }
+   
+   
+   
+   
+],
+"TechnicalBidding":[
+    {
+        "Heads":"LAST CLEANING DATE"
+    },
+    {
+        "Heads":"CLASS OF VESSEL"
+    },
+    {
+        "Heads":"COUNTRY OF ORIGIN"
+    },
+    {
+        "Heads":"LAST PORT OF CALL"
+    }
+] ,
+"CommercialBidding":[
+    {
+        "Heads" : "DEMURRAGE"
+    },
+    {
+        "Heads":"FREIGHT"
+    }
+]  
+
+ 
+           
+}
