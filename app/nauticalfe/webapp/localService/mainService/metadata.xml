@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="INGXT.MARINE_TRAFFIC_API_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="EtPortlist" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Locid"/>
+                </Key>
+                <Property Name="Mandt" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Client" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Loctyp" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="Location type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Locnam" Type="Edm.String" Nullable="false" MaxLength="60" sap:unicode="false" sap:label="Location name" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Knote" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Connect point" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Planloc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="OIL-TSW: Field will be deleted in R3E" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erdat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Created on" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Erzeit" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Created" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ernam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Created by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aedat" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="Changed On" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aezeit" Type="Edm.Time" Precision="0" sap:unicode="false" sap:label="Changed" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Aenam" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="Changed by" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bloind" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Blocking ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delind" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Deletion ind." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Tktselect" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Flag to Select Tkt" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rdact" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Loc SP Act" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Maxrate" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Rateuom" sap:label="Maximum rate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Minrate" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Rateuom" sap:label="Minimum rate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Operate" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Rateuom" sap:label="operating rate" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Rateuom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Rate unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Rateperd" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Time UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Maxusage" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Usageuom" sap:label="Max Volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Minusage" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Usageuom" sap:label="Min Volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Opeusage" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unicode="false" sap:unit="Usageuom" sap:label="Oper. Volume" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Usageuom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Usage unit" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Usageperd" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Time UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="SsRt" Type="Edm.String" Nullable="false" MaxLength="12" sap:unicode="false" sap:label="MeasrComp Rt. Type" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bschflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Berth Sched. Rel" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bschperd" Type="Edm.Decimal" Nullable="false" Precision="5" Scale="0" sap:unicode="false" sap:unit="Bschpuom" sap:label="Berth sch. per." sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Bschpuom" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="Time UoM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="unit-of-measure"/>
+                <Property Name="Tankagg" Type="Edm.Boolean" Nullable="false" sap:unicode="false" sap:label="Agg Tank Constraints" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pblnr" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Location ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchemaBusconf" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Schema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchemaTechsch" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Schema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SchemaAlloc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Schema" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ExternalInd" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Third Party Terminal" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PortidUan" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Port ID: UAN code" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Longitude" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Longitude" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Latitude" Type="Edm.String" Nullable="false" MaxLength="15" sap:unicode="false" sap:label="Latitude" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="EsPath" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Latitude"/>
+                </Key>
+                <Property Name="PathId" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="Char02" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Latitude" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Latitude" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Longitude" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Longitude" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="et_route_map" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IvFromPort"/>
+                    <PropertyRef Name="IvToPort"/>
+                </Key>
+                <Property Name="marineApiRoute" Type="INGXT.MARINE_TRAFFIC_API_SRV.marineApiRoute" Nullable="false"/>
+                <Property Name="IvFromPort" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Port ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvOptimized" Type="Edm.String" Nullable="false" MaxLength="1" sap:unicode="false" sap:label="Single-Character Flag" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IvToPort" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="Port ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="route" Relationship="INGXT.MARINE_TRAFFIC_API_SRV.route" FromRole="FromRole_route" ToRole="ToRole_route" sap:label="route"/>
+            </EntityType>
+            <ComplexType Name="marineApiRoute">
+                <Property Name="EvDistance" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Distance" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </ComplexType>
+            <Association Name="route" sap:content-version="1">
+                <End Type="INGXT.MARINE_TRAFFIC_API_SRV.et_route_map" Multiplicity="1" Role="FromRole_route"/>
+                <End Type="INGXT.MARINE_TRAFFIC_API_SRV.EsPath" Multiplicity="*" Role="ToRole_route"/>
+            </Association>
+            <EntityContainer Name="INGXT_MARINE_TRAFFIC_API_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="es_route_map" EntityType="INGXT.MARINE_TRAFFIC_API_SRV.et_route_map" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="es_port_master" EntityType="INGXT.MARINE_TRAFFIC_API_SRV.EtPortlist" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="EsPathCollection" EntityType="INGXT.MARINE_TRAFFIC_API_SRV.EsPath" sap:content-version="1"/>
+                <AssociationSet Name="route_AssocSet" Association="INGXT.MARINE_TRAFFIC_API_SRV.route" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="es_route_map" Role="FromRole_route"/>
+                    <End EntitySet="EsPathCollection" Role="ToRole_route"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://35.185.33.183:8001/sap/opu/odata/ingxt/MARINE_TRAFFIC_API_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://35.185.33.183:8001/sap/opu/odata/ingxt/MARINE_TRAFFIC_API_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

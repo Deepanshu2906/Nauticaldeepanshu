@@ -1,0 +1,187 @@
+<mvc:View xmlns:tnt="sap.tnt" xmlns:cards="sap.f.cards"
+xmlns:form="sap.ui.layout.form"
+ controllerName="nauticalfe.controller.View1"
+    xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+
+    <!--scrollbar added-->
+<ScrollContainer id="_IDGenScrollContainer2"
+		height="100%"
+		width="100%"
+		vertical="true"
+		focusable="true">
+ 
+
+
+
+  <tnt:ToolHeader id="header2"><Text id="link2" text="Freight Simulator"></Text></tnt:ToolHeader>
+ 
+
+  
+  <tnt:ToolHeader id="header3"><Text id="text31" text="Freight(Per TON)" class="freighttxt"></Text></tnt:ToolHeader>
+<tnt:ToolHeader id="_IDGenToolHeader1" class="freightback" >
+   <FlexBox id="_IDGenFlexBox1" alignItems="Center">
+    <Label id="_IDGenLabel1" text="Proposed Freight Cost:" class="freighttxt"></Label>
+    <Input id="inputProposedFreightCost"></Input>
+    <Label id="_IDGenLabel2" text="Total Cost:" class="freighttxt"></Label>
+    <Input id="inputTotalCost"></Input>
+
+    </FlexBox>
+    </tnt:ToolHeader>
+    
+    <FlexBox id="_IDGenFlexBox2" >
+    <Table id="table" items="{Vdata>/freightData1}" growing="true" growingThreshold="10"  >
+          <columns>
+           <Column id="heading1" >
+             <Text id="text1" text="Port Name"/>
+           </Column>
+           <Column id="heading2" >
+             <Text id="text2" text="Distance(NM)"/>
+           </Column>
+           
+           <Column id="heading4" >
+             <Text id="text4" text="Cargo Size"/>
+           </Column>
+           <Column id="heading5" >
+             <Text id="text5" text="Frieght cost"/>
+           </Column>
+           <Column id="heading6" >
+             <Text id="text6" text="Other Cost"/>
+           </Column>
+           <Column id="heading7" >
+             <Text id="text7" text="total Projected Cost Per Port"/>
+           </Column>
+            </columns>
+
+         <items>
+           <ColumnListItem id="coloumnlist">
+             <cells>
+              <Input id="field1" value ="{Vdata>Port Name}"/>
+              <Input  id="field2" value ="{Vdata>Distance(NM)}"/>
+              <Input  id="field3" value ="{Vdata>Cargo Size}"/>
+              <Input  id="field4" value ="{Vdata>Freight Cost}"/>
+              <Input  id="field5" value ="{Vdata>Other Cost}"/>
+               <Input id="field6" value ="{Vdata>Total Projected Cost per Port}"/>
+              
+              
+              
+             </cells>
+             
+           </ColumnListItem>
+             </items>
+        </Table>
+
+    </FlexBox>
+<tnt:ToolHeader id="header4"><Text id="link4" text="Freight(Lumpsum )" class="freighttxt"></Text></tnt:ToolHeader>
+<tnt:ToolHeader id="_IDGenToolHeader2" class="freightback" >
+   <FlexBox id="_IDGenFlexBox21" alignItems="Center">
+    <Label id="_IDGenLabel11" text="Proposed Freight Cost:" class="freighttxt"></Label>
+    <Input id="inputProposedFreightCost1"></Input>
+    <Label id="_IDGenLabel22" text="Total Cost:" class="freighttxt"></Label>
+    <Input id="inputTotalCost1"></Input>
+
+    </FlexBox>
+    </tnt:ToolHeader>
+    <FlexBox id="_IDGenFlexBox22">
+    <Table id="table1" items="{Vdata>/freightData2}" growing="true" growingThreshold="10"  >
+          <columns>
+           <Column id="heading11" >
+             <Text id="text11" text="Port Name"/>
+           </Column>
+           <Column id="heading12" >
+             <Text id="text12" text="Distance(NM)"/>
+           </Column>
+           
+           <Column id="heading14" >
+             <Text id="text14" text="Cargo Size"/>
+           </Column>
+           <Column id="heading15" >
+             <Text id="text15" text="Frieght cost"/>
+           </Column>
+           <Column id="heading23" >
+             <Text id="text16" text="Other Cost"/>
+           </Column>
+           <Column id="heading27" >
+             <Text id="text17" text="total Projected Cost Per Port"/>
+           </Column>
+            </columns>
+
+         <items>
+           <ColumnListItem id="coloumnlist1">
+             <cells>
+              <Input id="field21" value ="{Vdata>Port Name}"/>
+              <Input id="field22" value ="{Vdata>Distance(NM)}"/>
+              <Input id="field23" value ="{Vdata>Cargo Size}"/>
+              <Input id="field24" value ="{Vdata>Freight Cost}"/>
+              <Input id="field25" value ="{Vdata>Other Cost}"/>
+               <Input id="field26" value ="{Vdata>Total Projected Cost per Port}"/>
+              
+              
+              
+             </cells>
+             
+           </ColumnListItem>
+           
+          </items>
+        </Table>
+
+    </FlexBox>
+    
+    
+<tnt:ToolHeader id="header5"><Text id="link5" text="Freight(TO/NM )" class="freighttxt"></Text></tnt:ToolHeader>
+<tnt:ToolHeader id="_IDGenToolHeader3" class="freightback" >
+   <FlexBox id="_IDGenFlexBox23" alignItems="Center">
+    <Label id="_IDGenLabel12" text="Proposed Freight Cost:" class="freighttxt"></Label>
+    <Input id="inputProposedFreightCost2"></Input>
+    <Label id="_IDGenLabel23" text="Total Cost:" class="freighttxt"></Label>
+    <Input id="inputTotalCost2"></Input>
+
+    </FlexBox>
+    </tnt:ToolHeader>
+    <FlexBox id="_IDGenFlexBox24">
+    <Table id="table2" items="{Vdata>/freightData2}" growing="true" growingThreshold="10"  >
+          <columns>
+           <Column id="heading28" >
+             <Text id="text18" text="Port Name"/>
+           </Column>
+           <Column id="heading29" >
+             <Text id="text19" text="Distance(NM)"/>
+           </Column>
+           
+           <Column id="heading30" >
+             <Text id="text20" text="Cargo Size"/>
+           </Column>
+           <Column id="heading31" >
+             <Text id="text21" text="Frieght cost"/>
+           </Column>
+           <Column id="heading32" >
+             <Text id="text22" text="Other Cost"/>
+           </Column>
+           <Column id="heading33" >
+             <Text id="text23" text="total Projected Cost Per Port"/>
+           </Column>
+            </columns>
+
+         <items>
+           <ColumnListItem id="coloumnlist2">
+             <cells>
+              <Input id="field27" value ="{Vdata>Port Name}"/>
+              <Input id="field28" value ="{Vdata>Distance(NM)}"/>
+              <Input id="field29" value ="{Vdata>Cargo Size}"/>
+              <Input id="field30" value ="{Vdata>Freight Cost}"/>
+              <Input id="field31" value ="{Vdata>Other Cost}"/>
+               <Input id="field32" value ="{Vdata>Total Projected Cost per Port}"/>
+              
+              
+              
+             </cells>
+             
+           </ColumnListItem>
+           
+          </items>
+        </Table>
+
+    </FlexBox>
+
+
+    	</ScrollContainer>
+</mvc:View>

@@ -79,11 +79,11 @@
           "earlyRequests": true
         }
       },
-      "bidData":{
+      "bidData": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "Bid.json"
       },
-      "Vdata":{
+      "Vdata": {
         "type": "sap.ui.model.json.JSONModel",
         "uri": "VoyageSample.json"
       }
@@ -92,6 +92,38 @@
       "css": [
         {
           "uri": "css/style.css"
+        },
+        {
+          "uri": "css/leaflet.css"
+        },
+        {
+          "uri": "css/leaflet-routing-machine.css"
+        }
+      ],
+      "js": [
+        {
+          "uri": "libs/leaflet.js"
+        },
+        {
+          "uri": "libs/leaflet-routing-machine.js"
+        },
+        {
+          "uri": "libs/leaflet.curve.js"
+        },
+        {
+          "uri": "libs/esri-leaflet.js"
+        },
+        {
+          "uri": "libs/esri-leaflet-vector.js"
+        },
+        {
+          "uri": "libs/decimal.js"
+        },
+        {
+          "uri": "libs/dayjs.min.js"
+        },
+        {
+          "uri": "libs/dayjs-plugin-utc.js"
         }
       ]
     },
@@ -117,14 +149,21 @@
           "name": "RouteView2",
           "pattern": "page2",
           "target": [
-            "TargetView2"
+            "TargetCreateVoyageForm"
           ]
         },
         {
           "name": "RouteView3",
           "pattern": "page3",
           "target": [
-            "TargetView3"
+            "TargetFreightSimulator"
+          ]
+        },
+        {
+          "name": "RouteView4",
+          "pattern": "page3",
+          "target": [
+            "TargetFreightSimulator"
           ]
         },
         {
@@ -161,7 +200,8 @@
           "target": [
             "TargetMastView"
           ]
-        },{
+        },
+        {
           "name": "voyageType",
           "pattern": "voyageType",
           "target": [
@@ -181,8 +221,14 @@
           "target": [
             "TargetCurrencyMasterTable"
           ]
+        },
+        {
+          "name": "RouteView2test",
+          "pattern": "page2",
+          "target": [
+            "TargetCreateVoyageForm"
+          ]
         }
-
       ],
       "targets": {
         "TargetView1": {
@@ -192,19 +238,19 @@
           "viewId": "homeview",
           "viewName": "home"
         },
-        "TargetView2": {
+        "TargetCreateVoyageForm": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "View2_createVoyageForm",
-          "viewName": "createVoyageForm"
+          "viewName": "View1"
         },
-        "TargetView3": {
+        "TargetFreightSimulator": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "View3",
-          "viewName": "View3"
+          "viewId": "FreightSimulator",
+          "viewName": "FreightSimulator"
         },
         "TargetBidCont": {
           "viewType": "XML",

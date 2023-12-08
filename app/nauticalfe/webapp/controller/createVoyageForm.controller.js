@@ -10,7 +10,24 @@ sap.ui.define([
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
     function (Controller, Dialog, Table, Column, ColumnListItem, Text) {
+
+
         "use strict";
+
+
+        let pathVariable = [];
+        var latLngArr = [];
+        var routeArr = [];
+        var map;
+        var oJsonModel;
+        var DataNode = {
+            portData: [],
+            allPort: [],
+            temp: latLngArr,
+            temp1: routeArr,
+            oEdit: true,
+        };
+        var oVoyageDetailModel;
 
         return Controller.extend("nauticalfe.controller.createVoyageForm", {
             onInit: function () {
@@ -21,17 +38,17 @@ sap.ui.define([
                 //   alert("Create Voyage button clicked!");
                 // });
 
-                oView.byId("_IDGenButton2").attachPress(function () {
-                    alert("Freight Simulator button clicked!");
-                });
+                // oView.byId("_IDGenButton2").attachPress(function () {
+                //     alert("Freight Simulator button clicked!");
+                // });
 
-                oView.byId("_IDGenButton3").attachPress(function () {
-                    alert("Calculate button clicked!");
-                });
+                // oView.byId("_IDGenButton3").attachPress(function () {
+                //     alert("Calculate button clicked!");
+                // });
 
-                oView.byId("_IDGenButton4").attachPress(function () {
-                    alert("Refresh button clicked!");
-                });
+                // oView.byId("_IDGenButton4").attachPress(function () {
+                //     alert("Refresh button clicked!");
+                // });
             },
             populateInputField: function (inputField, selectedValue) {
                 inputField.setValue(selectedValue);
@@ -62,7 +79,7 @@ sap.ui.define([
                         //         ],
                         //     }),
 
-                            // Add more ColumnListItems as needed
+                        // Add more ColumnListItems as needed
                         // ],
                         selectionChange: function (oEvent) {
                             var oSelectedItem = oEvent.getParameter("listItem");
@@ -74,7 +91,7 @@ sap.ui.define([
                     }),
                     beginButton: new sap.m.Button({
                         text: "Cancel",
-                        type:"Reject",
+                        type: "Reject",
                         press: function () {
                             oDialog.close();
                         },
@@ -145,7 +162,7 @@ sap.ui.define([
                     }),
                     beginButton: new sap.m.Button({
                         text: "Cancel",
-                        type:"Reject",
+                        type: "Reject",
                         press: function () {
                             oDialog.close();
                         },
@@ -192,7 +209,7 @@ sap.ui.define([
                                 header: new sap.m.Text({ text: "Description" }),
                             }),
                         ],
-                        
+
                         selectionChange: function (oEvent) {
                             var oSelectedItem = oEvent.getParameter("listItem");
                             var oSelectedValue = oSelectedItem.getCells()[0].getText();
@@ -203,7 +220,7 @@ sap.ui.define([
                     }),
                     beginButton: new sap.m.Button({
                         text: "Cancel",
-                        type:"Reject",
+                        type: "Reject",
                         press: function () {
                             oDialog.close();
                         },
@@ -248,7 +265,7 @@ sap.ui.define([
                                 header: new sap.m.Text({ text: "Description" }),
                             }),
                         ],
-                        
+
                         selectionChange: function (oEvent) {
                             var oSelectedItem = oEvent.getParameter("listItem");
                             var oSelectedValue = oSelectedItem.getCells()[0].getText();
@@ -259,7 +276,7 @@ sap.ui.define([
                     }),
                     beginButton: new sap.m.Button({
                         text: "Cancel",
-                        type:"Reject",
+                        type: "Reject",
                         press: function () {
                             oDialog.close();
                         },
@@ -286,14 +303,104 @@ sap.ui.define([
                 // Open the dialog
                 oDialog.open();
             },
-            onLiveChageSpeed : function(oEvent){
-                
+            onLiveChageSpeed: function (oEvent) {
+
 
             },
             onCreateVoyage: function () {
                 const oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteView3");
             },
+            navToFreightSimulator: function () {
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteView4");
+            },
+            onCalc: function () {
+                let selectedPorts = oJsonModel.getData().portData;
+                let GvSpeed = selectedPorts[0].Speed;
+                let oModel = this.getOwnerComponent().getModel("NAUTICALCV_SRV");
+
+                let ZCalcNav = [];
+                for (let i = 0; i < selectedPorts.length; i++) {
+                    if (!selectedPorts[i].Weather) {
+                        // MessageBox.error("Please enter Weather ");
+                        // return false;
+                        selectedPorts[i].Weather = "0";
+                    }
+                    if (!selectedPorts[i].CargoSize) {
+                        MessageBox.error("Please enter CargoSize ");
+                        return false;
+                    }
+                    if (!selectedPorts[i].CargoUnit) {
+                        MessageBox.error("Please enter Cargo Unit");
+                        return false;
+                    }
+                    if (!GvSpeed) {
+                        MessageBox.error("Please enter Speed ");
+                        return false;
+                    }
+                    if (!selectedPorts[i].PortDays) {
+                        MessageBox.error("Please enter PortDays ");
+                        return false;
+                    }
+                }
+                if (!selectedPorts[0].DepartureDate) {
+                    MessageBox.error("Please select Departure Date and Time");
+                    return false;
+                }
+                ZCalcNav.push({
+                    Portc: selectedPorts[0].PortId,
+                    Portn: selectedPorts[0].PortName,
+                    Pdist: selectedPorts[0].Distance,
+                    Medst: "NM",
+                    Vspeed: GvSpeed,
+                    Ppdays: selectedPorts[0].PortDays,
+                    // Vsdays: selectedPorts[0].SeaDays,
+                    Vetdd: selectedPorts[0].DepartureDate,
+                    Vetdt: formatter.timeFormat(selectedPorts[0].DepartureTime),
+                    Vwead: selectedPorts[0].Weather,
+                });
+                for (let i = 1; i < selectedPorts.length; i++) {
+                    ZCalcNav.push({
+                        Portc: selectedPorts[i].PortId,
+                        Portn: selectedPorts[i].PortName,
+                        Pdist: selectedPorts[i].Distance,
+                        Medst: "NM",
+                        Vspeed: GvSpeed,
+                        Ppdays: selectedPorts[i].PortDays,
+                        // Vsdays: selectedPorts[i].SeaDays,
+                        Vwead: selectedPorts[i].Weather,
+                    });
+                }
+                let oPayload = {
+                    GvSpeed: GvSpeed,
+                    ZCalcNav: ZCalcNav,
+                };
+                // console.log(oPayload);
+                let that = this;
+                oModel.create("/ZCalculateSet", oPayload, {
+                    success: function (oData) {
+                        // console.log(oData);
+                        let totalDays = 0;
+                        oData.ZCalcNav.results.forEach((data, index) => {
+                            selectedPorts[index].SeaDays = data.Vsdays;
+                            selectedPorts[index].Speed = GvSpeed;
+                            selectedPorts[index].Weather = data.Vwead;
+                            selectedPorts[index].ArrivalDate = data.Vetad;
+                            selectedPorts[index].ArrivalTime = new Date(formatter.timestampToUtc(data.Vetat.ms));
+                            selectedPorts[index].DepartureDate = data.Vetdd;
+                            selectedPorts[index].DepartureTime = new Date(formatter.timestampToUtc(data.Vetdt.ms));
+                            totalDays += Number(selectedPorts[index].SeaDays) + Number(selectedPorts[index].PortDays);
+                            oJsonModel.refresh();
+                        });
+                        that.byId("daysInput").setValue(totalDays.toFixed(1));
+                    },
+                    error: function (oResponse) {
+                        // console.log(oResponse);
+                    },
+                });
+
+            }
 
         });
     });

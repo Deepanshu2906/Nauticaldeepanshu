@@ -1,164 +1,383 @@
-<mvc:View xmlns:tnt="sap.tnt"
-xmlns:form="sap.ui.layout.form"
-
-
-
- xmlns:l="sap.ui.layout"
- controllerName="nauticalfe.controller.createVoyageForm"
-    xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
-
-<!--scrollbar added-->
-<ScrollContainer id="_IDGenScrollContainer1"
-		height="100%"
-		width="100%"
-		vertical="true"
-		focusable="true">
-  <!--this is first page-->
+<mvc:View
+    xmlns:tnt="sap.tnt"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:s="nauticalfe.custom.map"
+    xmlns:marine="nauticalfe.custom.marineMap"
+    xmlns:l="sap.ui.layout"
+    controllerName="nauticalfe.controller.createVoyageForm"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+>
+    <!--scrollbar added-->
+    <ScrollContainer
+        id="_IDGenScrollContainer1"
+        height="100%"
+        width="100%"
+        vertical="true"
+        focusable="true"
+    >
+        <!--this is first page-->
         <l:Splitter
-        id="mainSplitter"
-        height="480px"
-        width="100%">
-        
-       
-        <VBox id="_IDGenVBox1" class="map_box">
-        
-            <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData1" minSize="220px" resizable="true" />
-            </layoutData>
-            <!-- Add a Form inside _IDGenSplitterLayoutData1 -->
-            <form:SimpleForm id="_IDGenSimpleForm1" title="Create Voyage">
-            
-            
-                <!-- Add your form elements here -->
-                <Label id="_IDGenLabel1" text="Voyage Name" showColon="false" design="Bold"/>
-                <Input id="_IDGenInput1" value="" />
-                <Label id="_IDGenLabel2" text="Voyage Type" showColon="false" design="Bold"/>
-                <Input id="_IDGenInput2" value="" showValueHelp="true" valueHelpRequest=".showValueHelpDialog1" />
-                <Label id="_IDGenLabel3" text="Bidding Type" showColon="false" design="Bold"/>
-                <Input id="_IDGenInput3" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog2"/>
-                <Label id="_IDGenLabel4" text="Cargo Type" showColon="false" design="Bold"/>
-                <Input id="_IDGenInput4" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog3"/>
-                <Label id="_IDGenLabel5" text="Currency" showColon="false" design="Bold"/>
-                <Input id="_IDGenInput5" value="" showValueHelp="true" valueHelpRequest="showValueHelpDialog4"/>
-                <!-- Add more form elements as needed -->
-            </form:SimpleForm>
-            
-        </VBox>
-        <VBox id="_IDGenVBox2" class="map1_box" >
-            <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData2" size="60%" resizable="false"/>
-            </layoutData>
+            id="mainSplitter"
+            height="480px"
+            width="100%"
+        >
+            <VBox
+                id="_IDGenVBox1"
+                class="map_box"
+            >
+                <layoutData>
+                    <l:SplitterLayoutData
+                        id="_IDGenSplitterLayoutData1"
+                        minSize="220px"
+                        resizable="true"
+                    />
+                </layoutData>
+                <!-- Add a Form inside _IDGenSplitterLayoutData1 -->
+                <form:SimpleForm
+                    id="_IDGenSimpleForm1"
+                    title="Create Voyage"
+                >
+                    <!-- Add your form elements here -->
+                    <Label
+                        id="_IDGenLabel1"
+                        text="Voyage Name"
+                        showColon="false"
+                        design="Bold"
+                    />
+                    <Input
+                        id="_IDGenInput1"
+                        value=""
+                    />
+                    <Label
+                        id="_IDGenLabel2"
+                        text="Voyage Type"
+                        showColon="false"
+                        design="Bold"
+                    />
+                    <Input
+                        id="_IDGenInput2"
+                        value=""
+                        showValueHelp="true"
+                        valueHelpRequest=".showValueHelpDialog1"
+                    />
+                    <Label
+                        id="_IDGenLabel3"
+                        text="Bidding Type"
+                        showColon="false"
+                        design="Bold"
+                    />
+                    <Input
+                        id="_IDGenInput3"
+                        value=""
+                        showValueHelp="true"
+                        valueHelpRequest="showValueHelpDialog2"
+                    />
+                    <Label
+                        id="_IDGenLabel4"
+                        text="Cargo Type"
+                        showColon="false"
+                        design="Bold"
+                    />
+                    <Input
+                        id="_IDGenInput4"
+                        value=""
+                        showValueHelp="true"
+                        valueHelpRequest="showValueHelpDialog3"
+                    />
+                    <Label
+                        id="_IDGenLabel5"
+                        text="Currency"
+                        showColon="false"
+                        design="Bold"
+                    />
+                    <Input
+                        id="_IDGenInput5"
+                        value=""
+                        showValueHelp="true"
+                        valueHelpRequest="showValueHelpDialog4"
+                    />
+                    <!-- Add more form elements as needed -->
+                </form:SimpleForm>
+            </VBox>
+            <VBox
+                id="_IDGenVBox2"
+                class="map1_box"
+            >
+                <layoutData>
+                    <l:SplitterLayoutData
+                        id="_IDGenSplitterLayoutData2"
+                        size="50%"
+                        resizable="true"
+                    />
+                </layoutData>
 
-            <Text text="heloo Marine Map"></Text>
-            
-        </VBox>
+                <s:LeafletMap />
+            </VBox>
 
-        <VBox id="_IDGenVBox3" class="map2_box"  >
-            <layoutData>
-                <l:SplitterLayoutData id="_IDGenSplitterLayoutData3" size="30%"  resizable="false" />
-            </layoutData>
-            <Text text="heloo Marine Traffic kaise"></Text>
+            <VBox
+                id="_IDGenVBox3"
+                class="map2_box"
+            >
+                <layoutData>
+                    <l:SplitterLayoutData
+                        id="_IDGenSplitterLayoutData3"
+                        size="40%"
+                        resizable="false"
+                    />
+                </layoutData>
+                <marine:MarineMap />
+            </VBox>
+        </l:Splitter>
+        <!-- <l:BlockLayoutCell
+            width="3"
+            class="cellNoPadding"
+        >
+            <l:content>
+                <s:LeafletMap />
+            </l:content>
+        </l:BlockLayoutCell>
+        <l:BlockLayoutCell
+            width="2"
+            class="cellNoPadding"
+        >
+            <l:content>
+                <marine:MarineMap />
+            </l:content>
+        </l:BlockLayoutCell> -->
 
-        </VBox>
-    </l:Splitter>
-    
-    
-    <HBox id="_IDGenHBox1" class="layout">
-       <FlexBox id="_IDGenFlexBox1" class="layout1" >
-        <CheckBox id="_IDGenCheckBox1" text="Suez" />
-        <CheckBox id="_IDGenCheckBox2" text="Panama" />
-        <CheckBox id="_IDGenCheckBox3" text="Keil" />
-        </FlexBox>
-        
-        <FlexBox id="_IDGenFlexBox2" class="layout1">
-        <Label id="_IDGenLabel6" text="Speed" class="sapUiMarginSmall"/>
-        <Input id="_IDGenInput6"  change="onLiveChageSpeed" type="Number" maxLength="3"/>
-        <Label id="_IDGenLabel8" text="NM/HRS" />
-        </FlexBox>
-        <FlexBox id="_IDGenFlexBox4" class="layout1" >
-        <Label id="_IDGenLabel7" text="Total Days" />
-        <Input id="_IDGenInput7"  />
-        </FlexBox>
-        <FlexBox id="_IDGenFlexBox3" class="layout1" >
-        <Button id="_IDGenButton1" class="clr" text="Create Voyage" press="onCreateVoyage"/>
-        <Button id="_IDGenButton2" text="Freight Simulator" />
-        <Button id="_IDGenButton3" text="Calculate" />
-        <Button id="_IDGenButton4"  icon="sap-icon://refresh" />
-        </FlexBox>
-        
-        
-      </HBox>
-        <Table id="table"  items="{Vdata>/voyageData}" growing="true" growingThreshold="10" noDataText="" showNoData="false" >
-          <columns>
-           <Column id="heading1" >
-             <Text id="text1" text="Port Name"/>
-           </Column>
-           <Column id="heading2" >
-             <Text id="text2" text="Distance(NM)"/>
-           </Column>
-           <Column id="heading3" >
-             <Text id="text3" text="Weather%"/>
-           </Column>
-           <Column id="heading4" >
-             <Text id="text4" text="Cargo Size"/>
-           </Column>
-           <Column id="heading5" >
-             <Text id="text5" text="Unit"/>
-           </Column>
-           <Column id="heading6" >
-             <Text id="text6" text="Speed(NM/Hr)"/>
-           </Column>
-           <Column id="heading7" >
-             <Text id="text7" text="Sea Days"/>
-           </Column>
-           <Column id="heading8" >
-             <Text id="text8" text="Port Days"/>
-           </Column>
-           <Column id="heading9" >
-             <Text id="text9" text="Arrival Date"/>
-           </Column>
-           <Column id="heading10" >
-             <Text id="text10" text="Arrival Time"/>
-           </Column>
-           <Column id="heading11" >
-             <Text id="text11" text="Departure date"/>
-           </Column>
-           <Column id="heading12" >
-             <Text id="text12" text="Departure Time"/>
-           </Column>
-          </columns>
+        <HBox
+            id="_IDGenHBox1"
+            class="layout"
+        >
+            <FlexBox
+                id="_IDGenFlexBox1"
+                class="layout1"
+            >
+                <CheckBox
+                    id="_IDGenCheckBox1"
+                    text="Suez"
+                />
+                <CheckBox
+                    id="_IDGenCheckBox2"
+                    text="Panama"
+                />
+                <CheckBox
+                    id="_IDGenCheckBox3"
+                    text="Keil"
+                />
+            </FlexBox>
 
-         <items>
-           <ColumnListItem id="coloumnlist" type="Navigation" press="onNext" >
-             <cells>
-              <Input id="field1" value ="{Vdata>Port Name}" editable="false"/>
-              <Input id="field8" value ="{Vdata>Distance}"/>
-              <Input id="field2" value ="{Vdata>Weather}"/>
-              <Input id="field3" value ="{Vdata>Cargo Size}"/>
-              <Input id="field4" value ="{Vdata>Unit}"/>
-              <Input id="field5" value ="{Vdata>Speed}" editable="false"/>
-               <Input id="field6" value ="{Vdata>Sea Days}" editable="false"/>
-              <Input id="field7" value ="{Vdata>Port Days}"/>
-              
-              <DatePicker id="DP4"	placeholder="Enter Date"	editable="false" change="handleChange"	class="" width="auto" />
-                <TimePicker id="TP1" change="handleChange"  editable="false" displayFormat="HH:mm:ss"></TimePicker>
-              <DatePicker id="DP3"	placeholder="Enter Date"	change="handleChange"	class=""/>
-              <TimePicker id="TP2" change="handleChange"  displayFormat="HH:mm:ss"></TimePicker>
-              
-             </cells>
-             
-           </ColumnListItem>
-           </items>
+            <FlexBox
+                id="_IDGenFlexBox2"
+                class="layout1"
+            >
+                <Label
+                    id="_IDGenLabel6"
+                    text="Speed"
+                    class="sapUiMarginSmall"
+                />
+                <Input
+                    id="_IDGenInput6"
+                    change="onLiveChageSpeed"
+                    type="Number"
+                    maxLength="3"
+                />
+                <Label
+                    id="_IDGenLabel8"
+                    text="NM/HRS"
+                />
+            </FlexBox>
+            <FlexBox
+                id="_IDGenFlexBox4"
+                class="layout1"
+            >
+                <Label
+                    id="_IDGenLabel7"
+                    text="Total Days"
+                />
+                <Input id="_IDGenInput7" />
+            </FlexBox>
+            <FlexBox
+                id="_IDGenFlexBox3"
+                class="layout1"
+            >
+                <Button
+                    id="_IDGenButton1"
+                    class="clr"
+                    text="Create Voyage"
+                    press="onCreateVoyage"
+                />
+                <Button
+                    id="_IDGenButton2"
+                    text="Freight Simulator"
+                    press="navToFreightSimulator"
+                />
+                <Button
+                    id="_IDGenButton3"
+                    text="Calculate"
+                />
+                <Button
+                    id="_IDGenButton4"
+                    icon="sap-icon://refresh"
+                />
+            </FlexBox>
+        </HBox>
+        <Table
+            id="table"
+            items="{Vdata>/voyageData}"
+            growing="true"
+            growingThreshold="10"
+            noDataText=""
+            showNoData="false"
+        >
+            <columns>
+                <Column id="heading1">
+                    <Text
+                        id="text1"
+                        text="Port Name"
+                    />
+                </Column>
+                <Column id="heading2">
+                    <Text
+                        id="text2"
+                        text="Distance(NM)"
+                    />
+                </Column>
+                <Column id="heading3">
+                    <Text
+                        id="text3"
+                        text="Weather%"
+                    />
+                </Column>
+                <Column id="heading4">
+                    <Text
+                        id="text4"
+                        text="Cargo Size"
+                    />
+                </Column>
+                <Column id="heading5">
+                    <Text
+                        id="text5"
+                        text="Unit"
+                    />
+                </Column>
+                <Column id="heading6">
+                    <Text
+                        id="text6"
+                        text="Speed(NM/Hr)"
+                    />
+                </Column>
+                <Column id="heading7">
+                    <Text
+                        id="text7"
+                        text="Sea Days"
+                    />
+                </Column>
+                <Column id="heading8">
+                    <Text
+                        id="text8"
+                        text="Port Days"
+                    />
+                </Column>
+                <Column id="heading9">
+                    <Text
+                        id="text9"
+                        text="Arrival Date"
+                    />
+                </Column>
+                <Column id="heading10">
+                    <Text
+                        id="text10"
+                        text="Arrival Time"
+                    />
+                </Column>
+                <Column id="heading11">
+                    <Text
+                        id="text11"
+                        text="Departure date"
+                    />
+                </Column>
+                <Column id="heading12">
+                    <Text
+                        id="text12"
+                        text="Departure Time"
+                    />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem
+                    id="coloumnlist"
+                    type="Navigation"
+                    press="onNext"
+                >
+                    <cells>
+                        <Input
+                            id="field1"
+                            value="{Vdata>Port Name}"
+                            editable="false"
+                        />
+                        <Input
+                            id="field8"
+                            value="{Vdata>Distance}"
+                        />
+                        <Input
+                            id="field2"
+                            value="{Vdata>Weather}"
+                        />
+                        <Input
+                            id="field3"
+                            value="{Vdata>Cargo Size}"
+                        />
+                        <Input
+                            id="field4"
+                            value="{Vdata>Unit}"
+                        />
+                        <Input
+                            id="field5"
+                            value="{Vdata>Speed}"
+                            editable="false"
+                        />
+                        <Input
+                            id="field6"
+                            value="{Vdata>Sea Days}"
+                            editable="false"
+                        />
+                        <Input
+                            id="field7"
+                            value="{Vdata>Port Days}"
+                        />
+
+                        <DatePicker
+                            id="DP4"
+                            placeholder="Enter Date"
+                            editable="false"
+                            change="handleChange"
+                            class=""
+                            width="auto"
+                        />
+                        <TimePicker
+                            id="TP1"
+                            change="handleChange"
+                            editable="false"
+                            displayFormat="HH:mm:ss"
+                        />
+                        <DatePicker
+                            id="DP3"
+                            placeholder="Enter Date"
+                            change="handleChange"
+                            class=""
+                        />
+                        <TimePicker
+                            id="TP2"
+                            change="handleChange"
+                            displayFormat="HH:mm:ss"
+                        />
+                    </cells>
+                </ColumnListItem>
+            </items>
         </Table>
-
-
-
-
-
-
-        
-      
-      
-      
-   	</ScrollContainer>   
+    </ScrollContainer>
 </mvc:View>

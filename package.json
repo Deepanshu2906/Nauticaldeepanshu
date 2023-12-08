@@ -11,7 +11,8 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
-    "@sap/ux-specification": "^1.108.18"
+    "@sap/ux-specification": "^1.108.18",
+    "ui5-middleware-simpleproxy": "^3.2.8"
   },
   "scripts": {
     "start": "cds-serve",
@@ -26,6 +27,16 @@
           "credentials": {
             "destination": "internalserver",
             "path": "/sap/opu/odata/ingxt/NAUTICALCV_SRV"
+          }
+        }
+      },
+      "NAUTIMARINE_TRAFFIC_API_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/NAUTIMARINE_TRAFFIC_API_SRV",
+        "[production]": {
+          "credentials": {
+            "destination": "internalserver",
+            "path": "/sap/opu/odata/nauti/MARINE_TRAFFIC_API_SRV"
           }
         }
       }
